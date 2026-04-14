@@ -34,9 +34,11 @@ export default function RootLayout({
               <span className="text-blue-600">Starter</span>
             </Link>
             
-            <nav className="flex gap-6 text-sm font-medium text-slate-600">
-              <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
-              <Link href="/contato" className="hover:text-blue-600 transition-colors">Contato</Link>
+            <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+              <Link href="/#servicos" className="hover:text-blue-600 transition-colors">Serviços</Link>
+              <Link href="/#portfolio" className="hover:text-blue-600 transition-colors">Portfólio</Link>
+              <Link href="/#precos" className="hover:text-blue-600 transition-colors">Preços</Link>
+              <Link href="/contato" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">Orçamento Grátis</Link>
             </nav>
           </div>
         </header>

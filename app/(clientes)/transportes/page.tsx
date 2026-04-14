@@ -1,7 +1,10 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import About from './components/About';
 import Services from './components/Services';
+import CoverageArea from './components/CoverageArea';
 import Differentials from './components/Differentials';
+import Testimonials from './components/Testimonials';
 import ContactCTA from './components/ContactCTA';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -18,8 +21,11 @@ export default function TransportesPage() {
       {/* Conteúdo principal da página */}
       <main className="flex-grow">
         <Hero />
+        <About />
         <Services />
+        <CoverageArea />
         <Differentials />
+        <Testimonials />
         <ContactCTA />
       </main>
 
