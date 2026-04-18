@@ -143,7 +143,14 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          {/* Sites Institucionais */}
+          <div className="mb-4">
+            <span className="inline-flex items-center gap-2 text-sm font-bold text-blue-700 mb-6">
+              <span className="w-2 h-2 rounded-full bg-blue-600 inline-block"></span>
+              Site Institucional — a partir de R$ 699
+            </span>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             {/* Card 1 - Transportes */}
             <div className="group rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white">
               <div className="h-48 bg-gradient-to-br from-slate-800 via-slate-900 to-orange-900 flex items-center justify-center relative overflow-hidden">
@@ -153,7 +160,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-orange-100 text-orange-700 rounded-full">Logística</span>
-                  <span className="text-xs text-slate-500">Landing Page</span>
+                  <span className="text-xs text-slate-500">Site Institucional</span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">NovaVia Logística</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
@@ -175,7 +182,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-sky-100 text-sky-700 rounded-full">Saúde</span>
-                  <span className="text-xs text-slate-500">Landing Page</span>
+                  <span className="text-xs text-slate-500">Site Institucional</span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Sorriso Pleno Odontologia</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
@@ -197,13 +204,88 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-amber-100 text-amber-700 rounded-full">Jurídico</span>
-                  <span className="text-xs text-slate-500">Landing Page</span>
+                  <span className="text-xs text-slate-500">Site Institucional</span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Ferreira & Associados</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
                   Site institucional para escritório de advocacia com áreas de atuação, equipe e consulta via WhatsApp.
                 </p>
                 <a href="/advocacia" target="_blank" className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                  Ver demonstração
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* HotPages */}
+          <div className="mb-4">
+            <span className="inline-flex items-center gap-2 text-sm font-bold text-rose-600 mb-6">
+              <span className="w-2 h-2 rounded-full bg-rose-500 inline-block"></span>
+              HotPage — a partir de R$ 399
+            </span>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Card 4 - Barbearia */}
+            <div className="group rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white">
+              <div className="h-48 bg-gradient-to-br from-zinc-800 via-zinc-900 to-amber-950 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #f59e0b 0, #f59e0b 1px, transparent 0, transparent 50%)', backgroundSize: '18px 18px' }}></div>
+                <span className="relative text-5xl">✂️</span>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-bold px-2 py-1 bg-amber-100 text-amber-700 rounded-full">Beleza</span>
+                  <span className="text-xs text-slate-500">HotPage</span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Barbearia Dom</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  Página simples e direta com serviços, preços, horários, endereço e agendamento via WhatsApp.
+                </p>
+                <a href="/barbearia" target="_blank" className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                  Ver demonstração
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Card 5 - Estética */}
+            <div className="group rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white">
+              <div className="h-48 bg-gradient-to-br from-rose-400 via-pink-500 to-rose-600 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                <span className="relative text-5xl">✿</span>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-bold px-2 py-1 bg-rose-100 text-rose-700 rounded-full">Estética</span>
+                  <span className="text-xs text-slate-500">HotPage</span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Studio Luma Estética</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  Página elegante com serviços, preços, horários de atendimento e contato via WhatsApp.
+                </p>
+                <a href="/estetica" target="_blank" className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+                  Ver demonstração
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Card 6 - Personal */}
+            <div className="group rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white">
+              <div className="h-48 bg-gradient-to-br from-slate-800 via-slate-900 to-lime-950 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80')] bg-cover bg-center opacity-20 group-hover:opacity-30 transition-opacity"></div>
+                <span className="relative text-5xl">⚡</span>
+              </div>
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-bold px-2 py-1 bg-lime-100 text-lime-700 rounded-full">Fitness</span>
+                  <span className="text-xs text-slate-500">HotPage</span>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">Move Personal Training</h3>
+                <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                  Página para personal trainer com modalidades, disponibilidade e agendamento de avaliação gratuita.
+                </p>
+                <a href="/personal" target="_blank" className="text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1">
                   Ver demonstração
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
                 </a>
@@ -226,112 +308,144 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Aviso tudo incluso */}
           <div className="flex items-center justify-center gap-3 mb-12 px-6 py-4 bg-blue-50 border border-blue-200 rounded-2xl max-w-2xl mx-auto">
             <span className="text-blue-600 text-xl">✦</span>
             <p className="text-sm text-blue-700 font-medium text-center">
-              Todos os planos incluem <strong>hospedagem, SSL, manutenção e suporte</strong> — sem cobranças extras. Domínio separado: <strong>R$ 40/ano</strong>.
+              Planos <strong>sem hospedagem</strong>: você hospeda onde preferir. Planos <strong>com hospedagem</strong>: configuramos e mantemos tudo por R$ 40/mês.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 items-stretch">
-            {/* Plano Starter */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 flex flex-col hover:shadow-lg transition-shadow">
-              <div className="mb-6">
-                <h3 className="text-lg font-bold text-slate-900 mb-1">Starter</h3>
-                <p className="text-sm text-slate-500">Ideal para quem precisa marcar presença online</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+
+            {/* HotPage — sem hospedagem */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col hover:shadow-lg transition-shadow">
+              <div className="mb-5">
+                <span className="inline-block text-xs font-bold px-2 py-1 bg-rose-100 text-rose-600 rounded-full mb-3">HotPage</span>
+                <h3 className="text-base font-bold text-slate-900 mb-1">HotPage</h3>
+                <p className="text-xs text-slate-500">Página simples, serviços e contato</p>
               </div>
-              <div className="mb-2">
-                <span className="text-4xl font-extrabold text-slate-900">R$ 99</span>
-                <span className="text-slate-500 text-sm ml-1">/mês</span>
+              <div className="mb-1">
+                <span className="text-3xl font-extrabold text-slate-900">R$ 399</span>
               </div>
-              <p className="text-xs text-slate-400 mb-8">Equivale a R$ 1.188/ano · Cancele quando quiser</p>
-              <ul className="space-y-3 mb-8 flex-grow">
+              <p className="text-xs text-slate-400 mb-6">Pagamento único · Sem hospedagem</p>
+              <ul className="space-y-2.5 mb-6 flex-grow">
                 {[
-                  "Landing page (1 página)",
-                  "Design responsivo (mobile-first)",
+                  "1 página completa",
+                  "Design responsivo mobile",
                   "WhatsApp integrado",
-                  "SEO básico configurado",
-                  "Hospedagem inclusa",
-                  "SSL gratuito",
-                  "Suporte por WhatsApp",
+                  "Serviços e preços",
+                  "Endereço e horários",
+                  "SEO básico",
+                  "Entrega em 5 dias úteis",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
-                    <span className="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600">
+                    <span className="w-4 h-4 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
                     {item}
                   </li>
                 ))}
               </ul>
-              <Link href="/contato" className="w-full text-center py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-colors">
-                Começar agora
+              <Link href="/contato" className="w-full text-center py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-colors text-sm">
+                Quero minha HotPage
               </Link>
             </div>
 
-            {/* Plano Pro — Destaque */}
-            <div className="bg-blue-600 rounded-2xl p-8 flex flex-col shadow-xl shadow-blue-200 relative">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-xs font-bold px-4 py-1.5 rounded-full border-2 border-white">
-                MAIS POPULAR
+            {/* HotPage + Hospedagem */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col hover:shadow-lg transition-shadow">
+              <div className="mb-5">
+                <span className="inline-block text-xs font-bold px-2 py-1 bg-rose-100 text-rose-600 rounded-full mb-3">HotPage + Hospedagem</span>
+                <h3 className="text-base font-bold text-slate-900 mb-1">HotPage Completa</h3>
+                <p className="text-xs text-slate-500">HotPage com tudo configurado</p>
               </div>
-              <div className="mb-6">
-                <h3 className="text-lg font-bold text-white mb-1">Pro</h3>
-                <p className="text-sm text-blue-200">Para negócios que querem gerar leads de verdade</p>
+              <div className="mb-1 flex items-end gap-2 flex-wrap">
+                <span className="text-3xl font-extrabold text-slate-900">R$ 399</span>
+                <span className="text-slate-500 text-sm">+ R$ 40/mês</span>
               </div>
-              <div className="mb-2">
-                <span className="text-4xl font-extrabold text-white">R$ 197</span>
-                <span className="text-blue-200 text-sm ml-1">/mês</span>
-              </div>
-              <p className="text-xs text-blue-300 mb-8">Equivale a R$ 2.364/ano · Cancele quando quiser</p>
-              <ul className="space-y-3 mb-8 flex-grow">
+              <p className="text-xs text-slate-400 mb-6">R$ 399 no cartão · R$ 40/mês hospedagem</p>
+              <ul className="space-y-2.5 mb-6 flex-grow">
                 {[
-                  "Site completo (até 5 páginas)",
-                  "Blog integrado",
+                  "Tudo do plano HotPage",
+                  "Hospedagem inclusa",
+                  "SSL gratuito",
+                  "Domínio configurado",
+                  "Suporte por WhatsApp",
+                  "Manutenção mensal",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600">
+                    <span className="w-4 h-4 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/contato" className="w-full text-center py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-colors text-sm">
+                Quero esse plano
+              </Link>
+            </div>
+
+            {/* Site Institucional — sem hospedagem */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col hover:shadow-lg transition-shadow">
+              <div className="mb-5">
+                <span className="inline-block text-xs font-bold px-2 py-1 bg-blue-100 text-blue-700 rounded-full mb-3">Site Institucional</span>
+                <h3 className="text-base font-bold text-slate-900 mb-1">Site Institucional</h3>
+                <p className="text-xs text-slate-500">Site completo para seu negócio</p>
+              </div>
+              <div className="mb-1">
+                <span className="text-3xl font-extrabold text-slate-900">R$ 699</span>
+              </div>
+              <p className="text-xs text-slate-400 mb-6">Pagamento único · Sem hospedagem</p>
+              <ul className="space-y-2.5 mb-6 flex-grow">
+                {[
+                  "Até 5 seções completas",
                   "Design premium responsivo",
                   "WhatsApp + formulário de leads",
                   "SEO on-page completo",
-                  "Google Analytics configurado",
-                  "Hospedagem inclusa",
-                  "Suporte prioritário",
+                  "Google Analytics",
+                  "Depoimentos e portfólio",
+                  "Entrega em 10 dias úteis",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-white">
-                    <span className="w-5 h-5 rounded-full bg-white/20 text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600">
+                    <span className="w-4 h-4 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
                     {item}
                   </li>
                 ))}
               </ul>
-              <Link href="/contato" className="w-full text-center py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors">
-                Quero o Pro
+              <Link href="/contato" className="w-full text-center py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-colors text-sm">
+                Quero meu site
               </Link>
             </div>
 
-            {/* Plano Enterprise */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-8 flex flex-col hover:shadow-lg transition-shadow">
-              <div className="mb-6">
-                <h3 className="text-lg font-bold text-slate-900 mb-1">Enterprise</h3>
-                <p className="text-sm text-slate-500">Para empresas que precisam de sistema completo</p>
+            {/* Site + Hospedagem — Destaque */}
+            <div className="bg-blue-600 rounded-2xl p-7 flex flex-col shadow-xl shadow-blue-200 relative">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-xs font-bold px-4 py-1.5 rounded-full border-2 border-white whitespace-nowrap">
+                MAIS ESCOLHIDO
               </div>
-              <div className="mb-2">
-                <span className="text-4xl font-extrabold text-slate-900">R$ 397</span>
-                <span className="text-slate-500 text-sm ml-1">/mês</span>
+              <div className="mb-5">
+                <span className="inline-block text-xs font-bold px-2 py-1 bg-white/20 text-white rounded-full mb-3">Site + Hospedagem</span>
+                <h3 className="text-base font-bold text-white mb-1">Site Completo</h3>
+                <p className="text-xs text-blue-200">Tudo pronto, a gente cuida de tudo</p>
               </div>
-              <p className="text-xs text-slate-400 mb-8">Equivale a R$ 4.764/ano · Cancele quando quiser</p>
-              <ul className="space-y-3 mb-8 flex-grow">
+              <div className="mb-1 flex items-end gap-2 flex-wrap">
+                <span className="text-3xl font-extrabold text-white">R$ 699</span>
+                <span className="text-blue-200 text-sm">+ R$ 40/mês</span>
+              </div>
+              <p className="text-xs text-blue-300 mb-6">R$ 699 no cartão · R$ 40/mês hospedagem</p>
+              <ul className="space-y-2.5 mb-6 flex-grow">
                 {[
-                  "Sistema web completo com CMS",
-                  "Blog + área de membros",
-                  "Painel administrativo",
-                  "Integrações via API",
-                  "Relatório mensal de resultados",
+                  "Tudo do Site Institucional",
                   "Hospedagem inclusa",
-                  "Suporte dedicado (WhatsApp + Email)",
+                  "SSL gratuito",
+                  "Domínio configurado",
+                  "Google Analytics ativo",
+                  "Suporte prioritário",
+                  "Manutenção mensal",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-sm text-slate-600">
-                    <span className="w-5 h-5 rounded-full bg-violet-100 text-violet-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-white">
+                    <span className="w-4 h-4 rounded-full bg-white/20 text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
                     {item}
                   </li>
                 ))}
               </ul>
-              <Link href="/contato" className="w-full text-center py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-colors">
-                Solicitar proposta
+              <Link href="/contato" className="w-full text-center py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors text-sm">
+                Quero esse plano
               </Link>
             </div>
           </div>
@@ -346,10 +460,10 @@ export default function Home() {
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-4xl">🔓</span>
+              <span className="text-4xl">💳</span>
               <div>
-                <h4 className="text-lg font-bold mb-1">Sem fidelidade</h4>
-                <p className="text-slate-400 text-sm">Cancele quando quiser, sem multa e sem perder seu site.</p>
+                <h4 className="text-lg font-bold mb-1">Parcele no cartão</h4>
+                <p className="text-slate-400 text-sm">O valor do site pode ser parcelado. O R$ 40/mês de hospedagem é cobrado separado.</p>
               </div>
             </div>
             <Link href="/contato" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors whitespace-nowrap flex-shrink-0">
