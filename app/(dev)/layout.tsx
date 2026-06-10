@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
 import Link from "next/link";
+import WhatsAppFloatButton from "./components/WhatsAppFloatButton";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -54,6 +55,9 @@ export default function RootLayout({
             {/* Esquerda: Logo e Copyright */}
             <div className="text-center md:text-left">
               <span className="font-bold text-slate-900 block mb-2">DevStarter.</span>
+              <p className="text-sm text-slate-500 mb-1">
+                DevStarter — Lins/SP, atendendo todo o Brasil.
+              </p>
               <p className="text-sm text-slate-500">
                 &copy; {new Date().getFullYear()} Todos os direitos reservados.
               </p>
@@ -85,6 +89,8 @@ export default function RootLayout({
 
           </div>
         </footer>
+
+        <WhatsAppFloatButton />
       </body>
     </html>
   );
