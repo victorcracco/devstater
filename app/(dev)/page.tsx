@@ -1,9 +1,10 @@
 import Link from "next/link";
+import { whatsappLink } from "@/lib/whatsapp";
 
 export default function Home() {
   return (
     <>
-      {/* 1. HERO SECTION: Impacto Visual */}
+      {/* 1. HERO SECTION */}
       <section className="relative bg-gradient-to-b from-blue-50 via-white to-white overflow-hidden py-24 md:py-36">
         {/* Decoração de fundo */}
         <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/4 w-[500px] h-[500px] bg-blue-100/60 rounded-full blur-3xl pointer-events-none"></div>
@@ -11,80 +12,138 @@ export default function Home() {
 
         <div className="relative max-w-4xl mx-auto px-4 text-center z-10">
           <span className="inline-block mb-6 text-sm font-semibold py-1 px-3 rounded-full bg-blue-100 text-blue-700 border border-blue-200">
-            🚀 Desenvolvimento Web Moderno
+            📍 DevStarter — Lins/SP, atendendo todo o Brasil
           </span>
           <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
-            Transformamos sua ideia em <br />
+            Seu site novo no ar em 7 dias —{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">
-              negócio digital
+              feito para trazer cliente no seu WhatsApp
             </span>.
           </h1>
           <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Criação de sites de alta performance, landing pages que convertem e sistemas sob medida. A tecnologia certa para sua empresa crescer.
+            Site profissional, rápido e com seu Google Business Profile otimizado, para quem busca seu serviço no celular encontrar você primeiro — e chamar no WhatsApp.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link 
-              href="/contato" 
+            <a
+              href={whatsappLink("Olá! Quero receber uma prévia grátis do meu site.")}
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all shadow-lg shadow-blue-200 hover:shadow-blue-300 transform hover:-translate-y-1"
             >
-              Fazer Orçamento Gratuito
+              Receba uma prévia grátis do seu site
+            </a>
+            <Link
+              href="#precos"
+              className="px-8 py-4 bg-white text-slate-900 font-bold rounded-lg border-2 border-slate-200 hover:border-slate-300 transition-all"
+            >
+              Ver planos e preços
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 2. SERVIÇOS: O que fazemos */}
-      <section id="servicos" className="py-24 bg-white">
+      {/* 2. OFERTA PRINCIPAL: Pacote Presença que Vende */}
+      <section className="py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="bg-slate-900 text-white rounded-3xl p-8 md:p-14 relative overflow-hidden">
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+            <div className="relative z-10">
+              <span className="inline-block mb-4 text-sm font-semibold py-1 px-3 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30">
+                Nossa oferta principal
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Pacote Presença que Vende</h2>
+              <p className="text-slate-300 text-lg mb-10 max-w-2xl leading-relaxed">
+                Um site pensado para conversão, com seu perfil do Google Business otimizado, no ar em poucos dias — e com uma garantia simples.
+              </p>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                <div className="flex flex-col gap-2">
+                  <span className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-lg font-bold">1</span>
+                  <h3 className="font-bold">Site focado em conversão</h3>
+                  <p className="text-sm text-slate-400">Estrutura e textos pensados para levar o visitante até o WhatsApp.</p>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-lg font-bold">2</span>
+                  <h3 className="font-bold">Google Business otimizado</h3>
+                  <p className="text-sm text-slate-400">Seu perfil configurado para aparecer melhor nas buscas locais.</p>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-lg font-bold">3</span>
+                  <h3 className="font-bold">Entrega em 7 dias</h3>
+                  <p className="text-sm text-slate-400">Do início do projeto até o site no ar, em até uma semana.</p>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-lg font-bold">✓</span>
+                  <h3 className="font-bold">Garantia de satisfação</h3>
+                  <p className="text-sm text-slate-400">Não gostou da prévia final? Você não paga a segunda parcela.</p>
+                </div>
+              </div>
+
+              <a
+                href={whatsappLink("Olá! Quero saber mais sobre o Pacote Presença que Vende.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-8 py-4 bg-white text-slate-900 font-bold rounded-lg hover:bg-blue-50 transition-all"
+              >
+                Quero esse pacote
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. SERVIÇOS: O que fazemos */}
+      <section id="servicos" className="py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">Soluções Sob Medida</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 tracking-tight">Soluções sob medida</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Não entregamos apenas código. Entregamos ferramentas que ajudam seu negócio a vender mais e operar melhor.
+              Do primeiro contato até o agendamento, cada plano resolve uma etapa do caminho até o seu cliente.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-blue-200 hover:bg-white transition-all duration-300 hover:shadow-xl hover:shadow-blue-100/50">
+            <div className="group p-8 bg-white rounded-2xl border border-slate-100 hover:border-blue-200 transition-all duration-300 hover:shadow-xl hover:shadow-blue-100/50">
               <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6 text-3xl group-hover:scale-110 transition-transform">
-                🌐
+                🎯
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Sites Institucionais</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Landing de Conversão</h3>
               <p className="text-slate-600 leading-relaxed">
-                Apresente sua marca com profissionalismo. Sites rápidos, otimizados para SEO e que funcionam perfeitamente em celulares.
+                Uma página direta ao ponto, com seus serviços, diferenciais e botão de WhatsApp em destaque.
               </p>
             </div>
 
             {/* Card 2 */}
-            <div className="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-indigo-200 hover:bg-white transition-all duration-300 hover:shadow-xl hover:shadow-indigo-100/50">
+            <div className="group p-8 bg-white rounded-2xl border border-slate-100 hover:border-indigo-200 transition-all duration-300 hover:shadow-xl hover:shadow-indigo-100/50">
               <div className="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 mb-6 text-3xl group-hover:scale-110 transition-transform">
-                🚀
+                🌐
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Landing Pages</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Site Profissional + Google Business</h3>
               <p className="text-slate-600 leading-relaxed">
-                Páginas focadas em conversão. Design estratégico para transformar visitantes em leads e clientes.
+                Site completo de 4 a 6 páginas com seu perfil do Google Business Profile otimizado para buscas locais.
               </p>
             </div>
 
             {/* Card 3 */}
-            <div className="group p-8 bg-slate-50 rounded-2xl border border-slate-100 hover:border-violet-200 hover:bg-white transition-all duration-300 hover:shadow-xl hover:shadow-violet-100/50">
+            <div className="group p-8 bg-white rounded-2xl border border-slate-100 hover:border-violet-200 transition-all duration-300 hover:shadow-xl hover:shadow-violet-100/50">
               <div className="w-14 h-14 bg-violet-100 rounded-xl flex items-center justify-center text-violet-600 mb-6 text-3xl group-hover:scale-110 transition-transform">
-                ⚙️
+                🤖
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-3">Sistemas Web</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-3">Premium com Agente de IA</h3>
               <p className="text-slate-600 leading-relaxed">
-                Painéis administrativos, áreas de membros e integrações via API desenvolvidas especificamente para sua necessidade.
+                Site completo com um agente de IA no seu WhatsApp, que responde, qualifica e agenda por você.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. DIFERENCIAIS: Por que nós? (Substitui a área de projetos visualmente) */}
+      {/* 4. DIFERENCIAIS: Por que nós? */}
       <section className="py-24 bg-slate-900 text-white relative overflow-hidden">
         {/* Efeito de fundo */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
-        
+
         <div className="max-w-6xl mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -92,10 +151,10 @@ export default function Home() {
               <p className="text-slate-400 text-lg mb-8 leading-relaxed">
                 Sabemos que contratar tecnologia pode ser complicado. Nosso processo é transparente, ágil e focado na entrega final.
               </p>
-              
+
               <ul className="space-y-4">
                 {[
-                  "Entrega no prazo combinado",
+                  "Site no ar em até 7 dias",
                   "Código limpo e otimizado para o Google",
                   "Suporte direto pelo WhatsApp",
                   "Tecnologias modernas (Next.js & React)"
@@ -107,7 +166,7 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            
+
             {/* Bloco visual decorativo */}
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-violet-600 rounded-2xl blur-2xl opacity-30 transform rotate-3"></div>
@@ -130,7 +189,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. PORTFÓLIO: Nichos atendidos */}
+      {/* 5. PORTFÓLIO: Nichos atendidos */}
       <section id="portfolio" className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -147,7 +206,7 @@ export default function Home() {
           <div className="mb-4">
             <span className="inline-flex items-center gap-2 text-sm font-bold text-blue-700 mb-6">
               <span className="w-2 h-2 rounded-full bg-blue-600 inline-block"></span>
-              Site Institucional — a partir de R$ 699
+              Sites Profissionais
             </span>
           </div>
           <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -160,7 +219,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-orange-100 text-orange-700 rounded-full">Logística</span>
-                  <span className="text-xs text-slate-500">Site Institucional</span>
+                  <span className="text-xs text-slate-500">Site Profissional</span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">NovaVia Logística</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
@@ -182,7 +241,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-sky-100 text-sky-700 rounded-full">Saúde</span>
-                  <span className="text-xs text-slate-500">Site Institucional</span>
+                  <span className="text-xs text-slate-500">Site Profissional</span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Sorriso Pleno Odontologia</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
@@ -204,7 +263,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-amber-100 text-amber-700 rounded-full">Jurídico</span>
-                  <span className="text-xs text-slate-500">Site Institucional</span>
+                  <span className="text-xs text-slate-500">Site Profissional</span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Ferreira & Associados</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
@@ -218,11 +277,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* HotPages */}
+          {/* Landing de Conversão */}
           <div className="mb-4">
             <span className="inline-flex items-center gap-2 text-sm font-bold text-rose-600 mb-6">
               <span className="w-2 h-2 rounded-full bg-rose-500 inline-block"></span>
-              HotPage — a partir de R$ 399
+              Landing de Conversão
             </span>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -235,7 +294,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-amber-100 text-amber-700 rounded-full">Beleza</span>
-                  <span className="text-xs text-slate-500">HotPage</span>
+                  <span className="text-xs text-slate-500">Landing de Conversão</span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Barbearia Dom</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
@@ -257,7 +316,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-rose-100 text-rose-700 rounded-full">Estética</span>
-                  <span className="text-xs text-slate-500">HotPage</span>
+                  <span className="text-xs text-slate-500">Landing de Conversão</span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Studio Luma Estética</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
@@ -279,7 +338,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-lime-100 text-lime-700 rounded-full">Fitness</span>
-                  <span className="text-xs text-slate-500">HotPage</span>
+                  <span className="text-xs text-slate-500">Landing de Conversão</span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">Move Personal Training</h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-4">
@@ -295,7 +354,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. PREÇOS */}
+      {/* 6. PREÇOS */}
       <section id="precos" className="py-24 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -308,35 +367,27 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="flex items-center justify-center gap-3 mb-12 px-6 py-4 bg-blue-50 border border-blue-200 rounded-2xl max-w-2xl mx-auto">
-            <span className="text-blue-600 text-xl">✦</span>
-            <p className="text-sm text-blue-700 font-medium text-center">
-              Planos <strong>sem hospedagem</strong>: você hospeda onde preferir. Planos <strong>com hospedagem</strong>: configuramos e mantemos tudo por R$ 40/mês.
-            </p>
-          </div>
+          <div className="grid md:grid-cols-3 gap-6 items-stretch mb-10">
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-
-            {/* HotPage — sem hospedagem */}
+            {/* Landing de Conversão */}
             <div className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col hover:shadow-lg transition-shadow">
               <div className="mb-5">
-                <span className="inline-block text-xs font-bold px-2 py-1 bg-rose-100 text-rose-600 rounded-full mb-3">HotPage</span>
-                <h3 className="text-base font-bold text-slate-900 mb-1">HotPage</h3>
-                <p className="text-xs text-slate-500">Página simples, serviços e contato</p>
+                <span className="inline-block text-xs font-bold px-2 py-1 bg-rose-100 text-rose-600 rounded-full mb-3">Landing de Conversão</span>
+                <h3 className="text-base font-bold text-slate-900 mb-1">Landing de Conversão</h3>
+                <p className="text-xs text-slate-500">Uma página direta, focada em levar o visitante ao WhatsApp</p>
               </div>
               <div className="mb-1">
-                <span className="text-3xl font-extrabold text-slate-900">R$ 399</span>
+                <span className="text-3xl font-extrabold text-slate-900">R$ 797</span>
               </div>
-              <p className="text-xs text-slate-400 mb-6">Pagamento único · Sem hospedagem</p>
+              <p className="text-xs text-slate-400 mb-6">Implementação única + mensalidade</p>
               <ul className="space-y-2.5 mb-6 flex-grow">
                 {[
-                  "1 página completa",
-                  "Design responsivo mobile",
-                  "WhatsApp integrado",
-                  "Serviços e preços",
-                  "Endereço e horários",
+                  "1 página completa e responsiva",
+                  "Botão de WhatsApp em destaque",
+                  "Serviços, preços e diferenciais",
+                  "Endereço e horários de atendimento",
                   "SEO básico",
-                  "Entrega em 5 dias úteis",
+                  "Entrega em até 7 dias",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600">
                     <span className="w-4 h-4 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
@@ -344,99 +395,39 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Link href="/contato" className="w-full text-center py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-colors text-sm">
-                Quero minha HotPage
-              </Link>
+              <a
+                href={whatsappLink("Olá! Quero saber mais sobre a Landing de Conversão.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-colors text-sm"
+              >
+                Quero essa landing
+              </a>
             </div>
 
-            {/* HotPage + Hospedagem */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col hover:shadow-lg transition-shadow">
-              <div className="mb-5">
-                <span className="inline-block text-xs font-bold px-2 py-1 bg-rose-100 text-rose-600 rounded-full mb-3">HotPage + Hospedagem</span>
-                <h3 className="text-base font-bold text-slate-900 mb-1">HotPage Completa</h3>
-                <p className="text-xs text-slate-500">HotPage com tudo configurado</p>
-              </div>
-              <div className="mb-1 flex items-end gap-2 flex-wrap">
-                <span className="text-3xl font-extrabold text-slate-900">R$ 399</span>
-                <span className="text-slate-500 text-sm">+ R$ 40/mês</span>
-              </div>
-              <p className="text-xs text-slate-400 mb-6">R$ 399 no cartão · R$ 40/mês hospedagem</p>
-              <ul className="space-y-2.5 mb-6 flex-grow">
-                {[
-                  "Tudo do plano HotPage",
-                  "Hospedagem inclusa",
-                  "SSL gratuito",
-                  "Domínio configurado",
-                  "Suporte por WhatsApp",
-                  "Manutenção mensal",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600">
-                    <span className="w-4 h-4 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/contato" className="w-full text-center py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-colors text-sm">
-                Quero esse plano
-              </Link>
-            </div>
-
-            {/* Site Institucional — sem hospedagem */}
-            <div className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col hover:shadow-lg transition-shadow">
-              <div className="mb-5">
-                <span className="inline-block text-xs font-bold px-2 py-1 bg-blue-100 text-blue-700 rounded-full mb-3">Site Institucional</span>
-                <h3 className="text-base font-bold text-slate-900 mb-1">Site Institucional</h3>
-                <p className="text-xs text-slate-500">Site completo para seu negócio</p>
-              </div>
-              <div className="mb-1">
-                <span className="text-3xl font-extrabold text-slate-900">R$ 699</span>
-              </div>
-              <p className="text-xs text-slate-400 mb-6">Pagamento único · Sem hospedagem</p>
-              <ul className="space-y-2.5 mb-6 flex-grow">
-                {[
-                  "Até 5 seções completas",
-                  "Design premium responsivo",
-                  "WhatsApp + formulário de leads",
-                  "SEO on-page completo",
-                  "Google Analytics",
-                  "Depoimentos e portfólio",
-                  "Entrega em 10 dias úteis",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600">
-                    <span className="w-4 h-4 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/contato" className="w-full text-center py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-colors text-sm">
-                Quero meu site
-              </Link>
-            </div>
-
-            {/* Site + Hospedagem — Destaque */}
+            {/* Site Profissional + GBP — Destaque */}
             <div className="bg-blue-600 rounded-2xl p-7 flex flex-col shadow-xl shadow-blue-200 relative">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-xs font-bold px-4 py-1.5 rounded-full border-2 border-white whitespace-nowrap">
                 MAIS ESCOLHIDO
               </div>
               <div className="mb-5">
-                <span className="inline-block text-xs font-bold px-2 py-1 bg-white/20 text-white rounded-full mb-3">Site + Hospedagem</span>
-                <h3 className="text-base font-bold text-white mb-1">Site Completo</h3>
-                <p className="text-xs text-blue-200">Tudo pronto, a gente cuida de tudo</p>
+                <span className="inline-block text-xs font-bold px-2 py-1 bg-white/20 text-white rounded-full mb-3">Site Profissional</span>
+                <h3 className="text-base font-bold text-white mb-1">Site Profissional + Google Business</h3>
+                <p className="text-xs text-blue-200">Site completo (4 a 6 páginas) com seu Google Business otimizado</p>
               </div>
-              <div className="mb-1 flex items-end gap-2 flex-wrap">
-                <span className="text-3xl font-extrabold text-white">R$ 699</span>
-                <span className="text-blue-200 text-sm">+ R$ 40/mês</span>
+              <div className="mb-1">
+                <span className="text-3xl font-extrabold text-white">R$ 1.497</span>
               </div>
-              <p className="text-xs text-blue-300 mb-6">R$ 699 no cartão · R$ 40/mês hospedagem</p>
+              <p className="text-xs text-blue-300 mb-6">Implementação única + mensalidade</p>
               <ul className="space-y-2.5 mb-6 flex-grow">
                 {[
-                  "Tudo do Site Institucional",
-                  "Hospedagem inclusa",
-                  "SSL gratuito",
-                  "Domínio configurado",
-                  "Google Analytics ativo",
-                  "Suporte prioritário",
-                  "Manutenção mensal",
+                  "De 4 a 6 páginas completas",
+                  "Google Business Profile otimizado",
+                  "Design premium responsivo",
+                  "WhatsApp + formulário de contato",
+                  "SEO on-page completo",
+                  "Google Analytics",
+                  "Entrega em até 7 dias",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2.5 text-sm text-white">
                     <span className="w-4 h-4 rounded-full bg-white/20 text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
@@ -444,51 +435,115 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
-              <Link href="/contato" className="w-full text-center py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors text-sm">
+              <a
+                href={whatsappLink("Olá! Quero saber mais sobre o Site Profissional + Google Business.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center py-3 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors text-sm"
+              >
                 Quero esse plano
-              </Link>
+              </a>
+            </div>
+
+            {/* Premium com Agente de IA */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col hover:shadow-lg transition-shadow">
+              <div className="mb-5">
+                <span className="inline-block text-xs font-bold px-2 py-1 bg-violet-100 text-violet-700 rounded-full mb-3">Premium</span>
+                <h3 className="text-base font-bold text-slate-900 mb-1">Premium + Agente de IA</h3>
+                <p className="text-xs text-slate-500">Site completo + agente de IA no seu WhatsApp</p>
+              </div>
+              <div className="mb-1">
+                <span className="text-3xl font-extrabold text-slate-900">R$ 2.497</span>
+              </div>
+              <p className="text-xs text-slate-400 mb-6">Implementação única + mensalidade</p>
+              <ul className="space-y-2.5 mb-6 flex-grow">
+                {[
+                  "Tudo do Site Profissional",
+                  "Agente de IA no WhatsApp do cliente",
+                  "Responde dúvidas automaticamente",
+                  "Qualifica e agenda atendimentos",
+                  "Google Business Profile otimizado",
+                  "Entrega em até 7 dias",
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600">
+                    <span className="w-4 h-4 rounded-full bg-violet-100 text-violet-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={whatsappLink("Olá! Quero saber mais sobre o plano Premium com Agente de IA.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full text-center py-3 border-2 border-slate-900 text-slate-900 font-bold rounded-lg hover:bg-slate-900 hover:text-white transition-colors text-sm"
+              >
+                Quero o Premium
+              </a>
             </div>
           </div>
 
-          {/* Garantia */}
-          <div className="mt-10 bg-slate-900 text-white rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Mensalidade */}
+          <div className="bg-white border border-slate-200 rounded-2xl p-8 mb-6">
+            <h3 className="text-lg font-bold text-slate-900 mb-2">Mensalidade incluída em todos os planos</h3>
+            <p className="text-sm text-slate-500 mb-6">Escolha o nível de acompanhamento que faz sentido para o seu negócio.</p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="border border-slate-200 rounded-xl p-5">
+                <span className="text-2xl font-extrabold text-slate-900">R$ 97<span className="text-sm font-medium text-slate-500">/mês</span></span>
+                <p className="text-sm text-slate-600 mt-2">Hospedagem, suporte e pequenas alterações no site.</p>
+              </div>
+              <div className="border border-slate-200 rounded-xl p-5">
+                <span className="text-2xl font-extrabold text-slate-900">R$ 197<span className="text-sm font-medium text-slate-500">/mês</span></span>
+                <p className="text-sm text-slate-600 mt-2">Tudo do plano anterior, com ajustes mensais e relatório simples de desempenho.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Pagamento e Garantia */}
+          <div className="bg-slate-900 text-white rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-4">
               <span className="text-4xl">🛡️</span>
               <div>
-                <h4 className="text-lg font-bold mb-1">Garantia de 30 dias</h4>
-                <p className="text-slate-400 text-sm">Não gostou? Devolvemos seu dinheiro sem burocracia nos primeiros 30 dias.</p>
+                <h4 className="text-lg font-bold mb-1">Garantia de satisfação</h4>
+                <p className="text-slate-400 text-sm">Não gostou da prévia final? Você não paga a segunda parcela.</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <span className="text-4xl">💳</span>
               <div>
-                <h4 className="text-lg font-bold mb-1">Parcele no cartão</h4>
-                <p className="text-slate-400 text-sm">O valor do site pode ser parcelado. O R$ 40/mês de hospedagem é cobrado separado.</p>
+                <h4 className="text-lg font-bold mb-1">Formas de pagamento</h4>
+                <p className="text-slate-400 text-sm">Pix (50% para iniciar e 50% na entrega) ou cartão parcelado.</p>
               </div>
             </div>
-            <Link href="/contato" className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors whitespace-nowrap flex-shrink-0">
+            <a
+              href={whatsappLink("Olá! Quero falar com a DevStarter sobre os planos.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-colors whitespace-nowrap flex-shrink-0"
+            >
               Falar com especialista
-            </Link>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* 6. CTA FINAL: Chamada para ação */}
+      {/* 7. CTA FINAL: Chamada para ação */}
       <section className="py-20 bg-blue-50">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-slate-900 mb-6">Pronto para começar?</h2>
           <p className="text-lg text-slate-600 mb-8">
             Vamos conversar sobre o seu projeto. Sem compromisso e sem tecniquês.
           </p>
-          <Link 
-            href="/contato" 
+          <a
+            href={whatsappLink("Olá! Quero conversar sobre o meu projeto com a DevStarter.")}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center px-8 py-4 bg-slate-900 text-white font-bold rounded-lg hover:bg-slate-800 transition-all hover:-translate-y-1 shadow-xl shadow-slate-200"
           >
             Falar com um desenvolvedor
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 ml-2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
             </svg>
-          </Link>
+          </a>
         </div>
       </section>
     </>
