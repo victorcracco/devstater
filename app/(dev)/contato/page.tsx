@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { whatsappLink, WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Contato",
@@ -23,13 +24,13 @@ export default function Contato() {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
           {/* WhatsApp - ATUALIZADO */}
-          <a href="https://wa.me/5514998469800" target="_blank" rel="noopener noreferrer"
+          <a href={whatsappLink("Olá! Vim pelo site e quero falar com a DevStarter.")} target="_blank" rel="noopener noreferrer"
             className="group flex flex-col items-center p-10 bg-white border border-slate-200 rounded-3xl hover:border-green-400 transition-all duration-300 hover:shadow-xl hover:shadow-green-100/50 text-center">
             <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform text-green-600">💬</div>
             <h2 className="text-2xl font-bold text-slate-900 mb-2">WhatsApp</h2>
             <p className="text-slate-600 mb-6">Resposta rápida para orçamentos.</p>
             <span className="py-2 px-6 bg-green-50 text-green-700 font-bold rounded-full group-hover:bg-green-500 group-hover:text-white transition-all">
-              (14) 99846-9800
+              {WHATSAPP_DISPLAY}
             </span>
           </a>
 
