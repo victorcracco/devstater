@@ -23,6 +23,8 @@ export default function EnergiaSolar() {
       heroHighlight="também merece aparecer no Google."
       heroSubtitle="Landing page feita para captar e qualificar pedidos de orçamento de energia solar na sua região, com WhatsApp e formulário curto de orçamento."
       heroCtaMessage="Olá! Vim pela página de energia solar e quero saber mais sobre a landing page."
+      signatureMessage="Olá! Quero saber sobre instalação de energia solar 🔆"
+      signatureReply="Posso te enviar um orçamento agora!"
       painsTitle="Você reconhece essa situação?"
       painsSubtitle="Problemas comuns de quem vende energia solar e ainda não tem uma página própria."
       pains={[

@@ -28,9 +28,9 @@ export default function QuoteForm({ segment, necessidadeLabel, necessidadePlaceh
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm space-y-4">
+    <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-line p-6 md:p-8 shadow-sm space-y-4">
       <div>
-        <label htmlFor="nome" className="block text-sm font-semibold text-slate-700 mb-1">
+        <label htmlFor="nome" className="block text-sm font-semibold text-ink mb-1">
           Seu nome
         </label>
         <input
@@ -39,13 +39,13 @@ export default function QuoteForm({ segment, necessidadeLabel, necessidadePlaceh
           required
           value={nome}
           onChange={(e) => setNome(e.target.value)}
-          className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full rounded-lg border border-line px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
           placeholder="Como podemos te chamar?"
         />
       </div>
 
       <div>
-        <label htmlFor="cidade" className="block text-sm font-semibold text-slate-700 mb-1">
+        <label htmlFor="cidade" className="block text-sm font-semibold text-ink mb-1">
           Cidade / região
         </label>
         <input
@@ -54,13 +54,13 @@ export default function QuoteForm({ segment, necessidadeLabel, necessidadePlaceh
           required
           value={cidade}
           onChange={(e) => setCidade(e.target.value)}
-          className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full rounded-lg border border-line px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
           placeholder="Cidade onde você atende"
         />
       </div>
 
       <div>
-        <label htmlFor="necessidade" className="block text-sm font-semibold text-slate-700 mb-1">
+        <label htmlFor="necessidade" className="block text-sm font-semibold text-ink mb-1">
           {necessidadeLabel}
         </label>
         <textarea
@@ -69,14 +69,14 @@ export default function QuoteForm({ segment, necessidadeLabel, necessidadePlaceh
           rows={3}
           value={necessidade}
           onChange={(e) => setNecessidade(e.target.value)}
-          className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full rounded-lg border border-line px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand"
           placeholder={necessidadePlaceholder}
         />
       </div>
 
       <button
         type="submit"
-        className="w-full py-3.5 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center gap-2"
+        className="w-full py-3.5 bg-accent text-brand-dark hover:bg-accent/90 font-bold rounded-lg transition-colors flex items-center justify-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
       >
         Pedir orçamento pelo WhatsApp
       </button>
