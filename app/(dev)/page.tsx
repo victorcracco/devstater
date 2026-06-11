@@ -12,7 +12,7 @@ export default function Home() {
 
         <div className="relative max-w-4xl mx-auto px-4 text-center z-10">
           <span className="inline-block mb-6 text-sm font-semibold py-1 px-3 rounded-full bg-blue-100 text-blue-700 border border-blue-200">
-            📍 DevStarter — Lins/SP, atendendo todo o Brasil
+            🇧🇷 Atendemos empresas em todo o Brasil
           </span>
           <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
             Seu site novo no ar em 7 dias —{" "}

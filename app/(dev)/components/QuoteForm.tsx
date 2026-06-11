@@ -55,7 +55,7 @@ export default function QuoteForm({ segment, necessidadeLabel, necessidadePlaceh
           value={cidade}
           onChange={(e) => setCidade(e.target.value)}
           className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          placeholder="Ex: Lins/SP"
+          placeholder="Cidade onde você atende"
         />
       </div>
 

@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import "../globals.css";
 import Link from "next/link";
 import WhatsAppFloatButton from "./components/WhatsAppFloatButton";
 
-const inter = Inter({ 
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ['400', '500', '600', '700', '800']
+  weight: ["600", "700"],
+  variable: "--font-fraunces",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "700", "800"],
+  variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
@@ -25,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
-      <body className={`${inter.className} soft-text bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen`}>
+      <body className={`${fraunces.variable} ${manrope.variable} soft-text bg-paper text-slate-900 antialiased flex flex-col min-h-screen`}>
         
         {/* Header Fixo */}
         <header className="w-full fixed top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/50">
@@ -56,7 +63,7 @@ export default function RootLayout({
             <div className="text-center md:text-left">
               <span className="font-bold text-slate-900 block mb-2">DevStarter.</span>
               <p className="text-sm text-slate-500 mb-1">
-                DevStarter — Lins/SP, atendendo todo o Brasil.
+                DevStarter — Atendemos empresas em todo o Brasil. 100% online, do briefing à entrega.
               </p>
               <p className="text-sm text-slate-500">
                 &copy; {new Date().getFullYear()} Todos os direitos reservados.
