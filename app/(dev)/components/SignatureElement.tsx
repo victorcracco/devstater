@@ -9,7 +9,7 @@ export default function SignatureElement({
 }: SignatureElementProps) {
   return (
     <div
-      className="relative mx-auto aspect-[9/19] w-full max-w-[280px] overflow-hidden rounded-[2rem] border-[6px] border-brand-dark bg-paper shadow-xl md:border-[8px]"
+      className="relative mx-auto aspect-[9/19] w-full max-w-[220px] sm:max-w-[280px] overflow-hidden rounded-[2rem] border-[6px] border-brand-dark bg-paper shadow-xl md:border-[8px]"
       aria-hidden="true"
     >
       {/* Mini site preview */}

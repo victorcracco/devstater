@@ -57,7 +57,7 @@ export default function NicheLanding({
       <section className="bg-paper py-20 md:py-32">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center">
-            <div className="order-2 lg:order-1">
+            <div className="order-1">
               <span className="inline-block mb-6 text-sm font-semibold py-1.5 px-3 rounded-full bg-brand/10 text-brand border border-brand/20">
                 {badge}
               </span>
@@ -88,7 +88,7 @@ export default function NicheLanding({
               </div>
             </div>
 
-            <div className="order-1 lg:order-2">
+            <div className="order-2">
               <SignatureElement message={signatureMessage} reply={signatureReply} />
             </div>
           </div>

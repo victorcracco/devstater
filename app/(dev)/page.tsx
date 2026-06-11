@@ -9,7 +9,7 @@ export default function Home() {
       <section className="bg-paper py-20 md:py-32">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center">
-            <div className="order-2 lg:order-1">
+            <div className="order-1">
               <span className="inline-block mb-6 text-sm font-semibold py-1.5 px-3 rounded-full bg-brand/10 text-brand border border-brand/20">
                 🇧🇷 Atendemos empresas em todo o Brasil
               </span>
@@ -40,7 +40,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="order-1 lg:order-2">
+            <div className="order-2">
               <SignatureElement />
             </div>
           </div>
@@ -212,7 +212,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-line/40 text-ink/70 rounded-md">Logística</span>
-                  <span className="text-xs text-ink/50">Site Profissional</span>
+                  <span className="text-xs text-ink/60">Site Profissional</span>
                 </div>
                 <h3 className="text-lg font-bold text-ink mb-2">NovaVia Logística</h3>
                 <p className="text-sm text-ink/70 leading-relaxed mb-4">
@@ -234,7 +234,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-line/40 text-ink/70 rounded-md">Saúde</span>
-                  <span className="text-xs text-ink/50">Site Profissional</span>
+                  <span className="text-xs text-ink/60">Site Profissional</span>
                 </div>
                 <h3 className="text-lg font-bold text-ink mb-2">Sorriso Pleno Odontologia</h3>
                 <p className="text-sm text-ink/70 leading-relaxed mb-4">
@@ -256,7 +256,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-line/40 text-ink/70 rounded-md">Jurídico</span>
-                  <span className="text-xs text-ink/50">Site Profissional</span>
+                  <span className="text-xs text-ink/60">Site Profissional</span>
                 </div>
                 <h3 className="text-lg font-bold text-ink mb-2">Ferreira & Associados</h3>
                 <p className="text-sm text-ink/70 leading-relaxed mb-4">
@@ -287,7 +287,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-line/40 text-ink/70 rounded-md">Beleza</span>
-                  <span className="text-xs text-ink/50">Landing de Conversão</span>
+                  <span className="text-xs text-ink/60">Landing de Conversão</span>
                 </div>
                 <h3 className="text-lg font-bold text-ink mb-2">Barbearia Dom</h3>
                 <p className="text-sm text-ink/70 leading-relaxed mb-4">
@@ -309,7 +309,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-line/40 text-ink/70 rounded-md">Estética</span>
-                  <span className="text-xs text-ink/50">Landing de Conversão</span>
+                  <span className="text-xs text-ink/60">Landing de Conversão</span>
                 </div>
                 <h3 className="text-lg font-bold text-ink mb-2">Studio Luma Estética</h3>
                 <p className="text-sm text-ink/70 leading-relaxed mb-4">
@@ -331,7 +331,7 @@ export default function Home() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs font-bold px-2 py-1 bg-line/40 text-ink/70 rounded-md">Fitness</span>
-                  <span className="text-xs text-ink/50">Landing de Conversão</span>
+                  <span className="text-xs text-ink/60">Landing de Conversão</span>
                 </div>
                 <h3 className="text-lg font-bold text-ink mb-2">Move Personal Training</h3>
                 <p className="text-sm text-ink/70 leading-relaxed mb-4">
@@ -372,7 +372,7 @@ export default function Home() {
               <div className="mb-1">
                 <span className="font-display text-3xl font-bold text-ink">R$ 797</span>
               </div>
-              <p className="text-xs text-ink/50 mb-6">Implementação única + mensalidade</p>
+              <p className="text-xs text-ink/60 mb-6">Implementação única + mensalidade</p>
               <ul className="space-y-2.5 mb-6 flex-grow">
                 {[
                   "1 página completa e responsiva",
@@ -411,7 +411,7 @@ export default function Home() {
               <div className="mb-1">
                 <span className="font-display text-3xl font-bold text-paper">R$ 1.497</span>
               </div>
-              <p className="text-xs text-paper/60 mb-6">Implementação única + mensalidade</p>
+              <p className="text-xs text-paper/70 mb-6">Implementação única + mensalidade</p>
               <ul className="space-y-2.5 mb-6 flex-grow">
                 {[
                   "De 4 a 6 páginas completas",
@@ -448,7 +448,7 @@ export default function Home() {
               <div className="mb-1">
                 <span className="font-display text-3xl font-bold text-ink">R$ 2.497</span>
               </div>
-              <p className="text-xs text-ink/50 mb-6">Implementação única + mensalidade</p>
+              <p className="text-xs text-ink/60 mb-6">Implementação única + mensalidade</p>
               <ul className="space-y-2.5 mb-6 flex-grow">
                 {[
                   "Tudo do Site Profissional",
