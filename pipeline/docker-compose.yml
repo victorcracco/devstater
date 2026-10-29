@@ -1,0 +1,13 @@
+# Roda ao lado do mailcow no mesmo servidor: os limites evitam disputar CPU e memória com ele
+services:
+  leads:
+    build: .
+    image: devstarter-leads
+    volumes:
+      - ./data:/data
+    # Chaves (Supabase, Groq, Zoho) ficam só no servidor, neste arquivo fora do Git
+    env_file:
+      - path: .env
+        required: false
+    mem_limit: 2g
+    cpus: 4
