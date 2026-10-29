@@ -17,10 +17,16 @@ docker compose run --rm leads importar --nichos transportadoras --ddd 14
 # 3. Valida e-mails, avalia os sites e classifica a oportunidade
 docker compose run --rm leads enriquecer --nicho transportadoras
 
+# 4. Gera os protótipos de site (um por empresa) e publica no Supabase
+docker compose run --rm leads prototipos --nicho transportadoras --oportunidade site_fora_do_ar,site_fraco
+docker compose run --rm leads publicar
+
 # Números e exportação para o Excel
 docker compose run --rm leads resumo --nicho transportadoras
 docker compose run --rm leads exportar --nicho transportadoras --saida /data/transportadoras.csv
 ```
+
+Os protótipos ficam em `devstarter.com.br/p/<slug>`. O repositório é público, então os dados dos prospects nunca vão para o Git: ficam no `data/` do servidor e no Supabase (`supabase.sql`). As chaves ficam só no `.env` do servidor.
 
 ## Como os leads são filtrados
 

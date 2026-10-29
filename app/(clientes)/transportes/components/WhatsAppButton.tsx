@@ -1,7 +1,10 @@
-export default function WhatsAppButton() {
+import type { SiteTransportadora } from "../site";
+
+export default function WhatsAppButton({ site }: { site: SiteTransportadora }) {
+  if (!site.contato.whatsapp) return null;
   return (
     <a
-      href="https://wa.me/5511999999999" // Substitua pelo número real
+      href={`https://wa.me/${site.contato.whatsapp}`}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group flex items-center justify-center"

@@ -8,33 +8,34 @@ import Testimonials from './components/Testimonials';
 import ContactCTA from './components/ContactCTA';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import { novaVia } from './site';
 
 export default function TransportesPage() {
   return (
-    // O flex-col e min-h-screen garantem que o footer fique sempre no final da tela, 
+    // O flex-col e min-h-screen garantem que o footer fique sempre no final da tela,
     // mesmo que o conteúdo da página seja pequeno (o que não é o caso aqui, mas é uma boa prática).
-    <div className="flex flex-col min-h-screen font-sans bg-slate-50"> 
-      
+    <div className="flex flex-col min-h-screen font-sans bg-slate-50">
+
       {/* Menu de navegação fixo e transparente/sólido */}
-      <Navbar />
-      
+      <Navbar site={novaVia} />
+
       {/* Conteúdo principal da página */}
       <main className="flex-grow">
-        <Hero />
-        <About />
-        <Services />
-        <CoverageArea />
-        <Differentials />
-        <Testimonials />
-        <ContactCTA />
+        <Hero site={novaVia} />
+        <About site={novaVia} />
+        <Services site={novaVia} />
+        <CoverageArea site={novaVia} />
+        <Differentials site={novaVia} />
+        <Testimonials site={novaVia} />
+        <ContactCTA site={novaVia} />
       </main>
 
       {/* Rodapé escuro premium */}
-      <Footer />
+      <Footer site={novaVia} />
 
       {/* Botão flutuante do WhatsApp para conversão rápida */}
-      <WhatsAppButton />
-      
+      <WhatsAppButton site={novaVia} />
+
     </div>
   );
 }
