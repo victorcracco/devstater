@@ -12,7 +12,7 @@ export default function CoverageArea({ site }: { site: SiteTransportadora }) {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
-            <span className="text-orange-500 font-bold tracking-wider uppercase text-sm mb-2 block">{cobertura.rotulo}</span>
+            <span className="text-orange-700 font-bold tracking-wider uppercase text-sm mb-2 block">{cobertura.rotulo}</span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
               {cobertura.titulo}
             </h2>
@@ -64,7 +64,7 @@ export default function CoverageArea({ site }: { site: SiteTransportadora }) {
                 href={linkConsulta}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600 transition-colors text-sm"
+                className="px-6 py-3 bg-orange-500 text-slate-950 font-bold rounded-lg hover:bg-orange-600 transition-colors text-sm"
               >
                 {cobertura.consulta.rotulo}
               </a>
@@ -90,7 +90,7 @@ export default function CoverageArea({ site }: { site: SiteTransportadora }) {
                 href={linkColeta}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-orange-500 text-white font-bold rounded-xl hover:bg-orange-600 transition-colors whitespace-nowrap flex-shrink-0"
+                className="px-8 py-4 bg-orange-500 text-slate-950 font-bold rounded-xl hover:bg-orange-600 transition-colors whitespace-nowrap flex-shrink-0"
               >
                 {cobertura.ctaDestaques}
               </a>

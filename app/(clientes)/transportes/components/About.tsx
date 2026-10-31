@@ -11,7 +11,7 @@ export default function About({ site }: { site: SiteTransportadora }) {
 
           {/* Texto */}
           <div>
-            <span className="text-orange-500 font-bold tracking-wider uppercase text-sm mb-2 block">{sobre.rotulo}</span>
+            <span className="text-orange-700 font-bold tracking-wider uppercase text-sm mb-2 block">{sobre.rotulo}</span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mb-6 leading-tight">
               {sobre.titulo.map((linha, i) => (
                 <span key={i}>{i > 0 && <br />}{linha}</span>

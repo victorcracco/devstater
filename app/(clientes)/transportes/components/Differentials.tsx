@@ -27,7 +27,7 @@ export default function Differentials({ site }: { site: SiteTransportadora }) {
             {diferenciais.numeros.map((numero, i) => (
               <div key={numero.rotulo}>
                 <p className={`text-3xl font-bold mb-1 ${i === 0 ? "text-white" : "text-orange-500"}`}>{numero.valor}</p>
-                <p className="text-sm text-slate-500 font-medium">{numero.rotulo}</p>
+                <p className="text-sm text-slate-400 font-medium">{numero.rotulo}</p>
               </div>
             ))}
           </div>

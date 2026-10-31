@@ -33,7 +33,7 @@ export default function Hero({ site }: { site: SiteTransportadora }) {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <a href="#cotacao" className="group flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-8 rounded-lg transition-all">
+            <a href="#cotacao" className="group flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-slate-950 font-semibold py-4 px-8 rounded-lg transition-all">
               {hero.ctaPrincipal}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>

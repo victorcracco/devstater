@@ -26,7 +26,7 @@ export default function ContactCTA({ site }: { site: SiteTransportadora }) {
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-white text-lg font-bold py-4 px-8 rounded-full transition-transform hover:scale-105 shadow-lg shadow-orange-500/30 w-full sm:w-auto justify-center"
+                className="flex items-center gap-3 bg-orange-500 hover:bg-orange-600 text-slate-950 text-lg font-bold py-4 px-8 rounded-full transition-transform hover:scale-105 shadow-lg shadow-orange-500/30 w-full sm:w-auto justify-center"
               >
                 <PhoneCall className="w-6 h-6" />
                 {contato.rotuloBotao}

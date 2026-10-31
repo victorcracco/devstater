@@ -10,7 +10,7 @@ export default function Services({ site }: { site: SiteTransportadora }) {
         {/* Header da Seção */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
-            <span className="text-orange-500 font-bold tracking-wider uppercase text-sm mb-2 block">{servicos.rotulo}</span>
+            <span className="text-orange-700 font-bold tracking-wider uppercase text-sm mb-2 block">{servicos.rotulo}</span>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">{servicos.titulo}</h2>
           </div>
           <p className="text-slate-600 max-w-md text-lg">

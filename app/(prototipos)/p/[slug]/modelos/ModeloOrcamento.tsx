@@ -16,7 +16,7 @@ export default function ModeloOrcamento({ site, dados }: PropsModelo) {
     <div className="min-h-screen bg-white text-slate-900">
       <header className="bg-slate-950 text-white">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-          <span className="min-w-0 truncate text-xl font-extrabold tracking-tight">{dados.nome}</span>
+          <span className="line-clamp-2 min-w-0 text-lg font-extrabold leading-tight tracking-tight md:text-xl">{dados.nome}</span>
           {ligar && (
             <a href={ligar} className="flex shrink-0 items-center gap-2 text-sm font-bold text-yellow-400 hover:text-yellow-300">
               <Phone className="h-4 w-4" />

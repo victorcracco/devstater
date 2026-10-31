@@ -17,11 +17,11 @@ export default function Navbar({ site, comFaixa = false }: { site: SiteTransport
   }, []);
 
   return (
-    <header className={`fixed ${comFaixa ? "top-[112px] md:top-[72px]" : "top-0"} left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"}`}>
+    <header className={`fixed ${comFaixa ? "top-[112px] md:top-[72px]" : "top-0"} left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-4 md:py-6"}`}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between gap-4">
         <Link href={site.inicio} className="flex items-center gap-2 group min-w-0">
           <Logo className={`w-8 h-8 shrink-0 ${isScrolled ? "text-blue-900" : "text-white"} transition-colors`} />
-          <span className={`text-2xl font-bold tracking-tighter truncate ${isScrolled ? "text-slate-900" : "text-white"}`}>
+          <span className={`text-xl md:text-2xl font-bold leading-tight tracking-tighter line-clamp-2 ${isScrolled ? "text-slate-900" : "text-white"}`}>
             {site.marca.texto}<span className="text-orange-500">{site.marca.destaque}</span>
           </span>
         </Link>
@@ -37,7 +37,7 @@ export default function Navbar({ site, comFaixa = false }: { site: SiteTransport
               {link.nome}
             </Link>
           ))}
-          <a href={site.ctaMenu.href} className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-medium transition-all transform hover:scale-105">
+          <a href={site.ctaMenu.href} className="bg-orange-500 hover:bg-orange-600 text-slate-950 px-6 py-2.5 rounded-full font-medium transition-all transform hover:scale-105">
             {site.ctaMenu.rotulo}
           </a>
         </nav>

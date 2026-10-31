@@ -14,7 +14,7 @@ export default function ModeloSimples({ site, dados }: PropsModelo) {
     <div className="min-h-screen bg-white text-slate-800">
       <header className="border-b border-slate-200">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
-          <span className="min-w-0 truncate font-display text-xl font-bold text-[#0B3C5D]">{dados.nome}</span>
+          <span className="line-clamp-2 min-w-0 font-display text-lg font-bold leading-tight text-[#0B3C5D] md:text-xl">{dados.nome}</span>
           <div className="flex shrink-0 items-center gap-5">
             {ligar && (
               <a href={ligar} className="hidden items-center gap-2 text-sm font-semibold text-slate-700 hover:text-[#0B3C5D] md:flex">

@@ -61,7 +61,7 @@ export default function Footer({ site }: { site: SiteTransportadora }) {
             <p className="text-sm text-slate-400 mb-4">Receba novidades e cotações especiais no seu email.</p>
             <div className="flex">
               <input type="email" placeholder="Seu email" className="bg-slate-900 border border-slate-800 text-white px-4 py-2 w-full rounded-l-md outline-none focus:border-orange-500" />
-              <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-r-md transition-colors text-white font-medium">
+              <button className="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-r-md transition-colors text-slate-950 font-medium">
                 Assinar
               </button>
             </div>
@@ -69,7 +69,7 @@ export default function Footer({ site }: { site: SiteTransportadora }) {
         )}
       </div>
 
-      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-center text-sm text-slate-500">
+      <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-center text-sm text-slate-400">
         © {new Date().getFullYear()} {site.nomeCompleto}. Todos os direitos reservados.
         {contato.cnpj && <span className="block mt-1">CNPJ {contato.cnpj}</span>}
         {contato.registro && <span className="block mt-1">{contato.registro}</span>}
