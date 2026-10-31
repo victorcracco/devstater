@@ -15,7 +15,7 @@ export default function Navbar({ site, comFaixa = false }: { site: SiteTransport
   }, []);
 
   return (
-    <header className={`fixed ${comFaixa ? "top-10" : "top-0"} left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"}`}>
+    <header className={`fixed ${comFaixa ? "top-[72px] sm:top-10" : "top-0"} left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"}`}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between gap-4">
         <Link href={site.inicio} className="flex items-center gap-2 group min-w-0">
           <Truck className={`w-8 h-8 shrink-0 ${isScrolled ? "text-blue-900" : "text-white"} transition-colors`} />

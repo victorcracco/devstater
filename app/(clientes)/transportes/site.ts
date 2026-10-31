@@ -96,8 +96,8 @@ export const novaVia: SiteTransportadora = {
     depois: "no tempo exato.",
     subtitulo:
       "Especialistas em transporte rodoviário e logística integrada. Mais de 10 mil entregas realizadas com segurança, tecnologia e rastreamento em tempo real.",
-    imagem:
-      "https://plus.unsplash.com/premium_photo-1661963219843-f1a50a6cfcd3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    // Foto de Josiah Farrow, licença gratuita do Unsplash (unsplash.com/photos/ucuOscdCaO4)
+    imagem: "https://images.unsplash.com/photo-1592805144716-feeccccef5ac?fm=jpg&q=70&w=1600&fit=crop",
     ctaPrincipal: "Solicitar Orçamento",
     ctaSecundario: "Nossas Soluções",
   },

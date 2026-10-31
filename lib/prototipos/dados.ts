@@ -17,6 +17,7 @@ export type DadosPrototipo = {
   cnpj?: string;
   desde?: number;
   cnae: string;
+  modelo?: string;
   expiraEm: string;
 };
 
