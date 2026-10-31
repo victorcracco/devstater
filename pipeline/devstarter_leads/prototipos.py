@@ -163,6 +163,9 @@ def descartar_nao_enviados(conn, nicho: str) -> int:
 
 
 def gerar(conn, nicho: str, oportunidades: list[str], dias: int = 45, limite: int | None = None) -> dict:
+    # Sem o conteúdo do nicho no site, o link do e-mail daria 404
+    if not config.NICHOS[nicho].site_pronto:
+        raise SystemExit(f"O nicho {nicho} ainda não existe no site (lib/prototipos/nichos). Publique-o e marque site_pronto.")
     PASTA.mkdir(parents=True, exist_ok=True)
     leads = conn.execute(
         f"""SELECT * FROM leads

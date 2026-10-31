@@ -5,7 +5,7 @@ import os
 import random
 import smtplib
 import ssl
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from email.message import EmailMessage
 from email.utils import formataddr, formatdate, make_msgid
 from zoneinfo import ZoneInfo
@@ -15,6 +15,7 @@ from . import db, mensagens, prototipos, publicacao, respostas
 FUSO = ZoneInfo("America/Sao_Paulo")
 SITE = "https://www.devstarter.com.br/p/"
 DIAS_UTEIS_ENTRE_ETAPAS = {2: 3, 3: 5}
+FERIADOS_FIXOS = {"01-01", "04-21", "05-01", "09-07", "10-12", "11-02", "11-15", "11-20", "12-25"}
 TAXA_MAXIMA_DEVOLUCAO = 0.05
 
 
@@ -36,11 +37,32 @@ def _janela() -> tuple[str, str]:
     return inicio, fim
 
 
+def _pascoa(ano: int) -> date:
+    """Domingo de Páscoa, base dos feriados móveis (algoritmo de Meeus/Jones/Butcher)."""
+    a = ano % 19
+    b, c = divmod(ano, 100)
+    d, e = divmod(b, 4)
+    g = (b - (b + 8) // 25 + 1) // 3
+    h = (19 * a + b - d - g + 15) % 30
+    i, k = divmod(c, 4)
+    l = (32 + 2 * e + 2 * i - h - k) % 7
+    m = (a + 11 * h + 22 * l) // 451
+    mes, dia = divmod(h + l - 7 * m + 114, 31)
+    return date(ano, mes, dia + 1)
+
+
+def feriado(dia: date) -> bool:
+    """Feriados nacionais, mais Carnaval e Corpus Christi, em que quase nenhuma empresa lê e-mail."""
+    if dia.strftime("%m-%d") in FERIADOS_FIXOS:
+        return True
+    return (dia - _pascoa(dia.year)).days in (-48, -47, -2, 60)
+
+
 def dias_uteis(desde: datetime, ate: datetime) -> int:
     dia, fim, total = desde.astimezone(FUSO).date(), ate.astimezone(FUSO).date(), 0
     while dia < fim:
         dia += timedelta(days=1)
-        total += dia.weekday() < 5
+        total += dia.weekday() < 5 and not feriado(dia)
     return total
 
 
@@ -56,6 +78,16 @@ def aprovar(conn, slugs: list[str] | None = None, oportunidades: list[str] | Non
         return conn.execute(
             f"UPDATE leads SET status = 'aprovado', atualizado_em = datetime('now') WHERE {' AND '.join(filtros)}",
             params,
+        ).rowcount
+
+
+def reprovar(conn, slugs: list[str]) -> int:
+    """Tira da fila protótipos aprovados que ainda não receberam nenhum e-mail."""
+    with conn:
+        return conn.execute(
+            f"""UPDATE leads SET status = 'prototipo', atualizado_em = datetime('now')
+                WHERE status = 'aprovado' AND prototipo_slug IN ({', '.join('?' * len(slugs))})""",
+            slugs,
         ).rowcount
 
 
@@ -96,6 +128,8 @@ def bloqueio(conn, agora: datetime) -> str | None:
     local = agora.astimezone(FUSO)
     if local.weekday() >= 5:
         return "fim de semana"
+    if feriado(local.date()):
+        return "feriado"
     inicio, fim = _janela()
     if not inicio <= local.strftime("%H:%M") < fim:
         return "fora do horário comercial"

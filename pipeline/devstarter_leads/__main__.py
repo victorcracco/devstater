@@ -49,6 +49,9 @@ def main() -> None:
     a.add_argument("--oportunidade", type=_lista)
     a.add_argument("--todos", action="store_true", help="aprova todos os protótipos ainda não aprovados")
 
+    n = sub.add_parser("reprovar", help="tira da fila protótipos aprovados que ainda não receberam e-mail")
+    n.add_argument("--slugs", type=_lista, required=True)
+
     v = sub.add_parser("previa", help="mostra o e-mail que seria enviado para um protótipo")
     v.add_argument("--slug", required=True)
     v.add_argument("--etapa", type=int, default=1, choices=(1, 2, 3))
@@ -96,6 +99,8 @@ def main() -> None:
             if not (args.slugs or args.oportunidade or args.todos):
                 p.error("diga o que aprovar: --slugs, --oportunidade ou --todos")
             print(f"{envio.aprovar(conn, args.slugs, args.oportunidade)} protótipos aprovados para envio")
+        elif args.comando == "reprovar":
+            print(f"{envio.reprovar(conn, args.slugs)} protótipos retirados da fila")
         elif args.comando == "previa":
             print(envio.previa(conn, args.slug, args.etapa, args.html))
         elif args.comando == "ciclo":

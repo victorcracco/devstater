@@ -7,6 +7,8 @@ import json
 from datetime import date
 from html import escape
 
+from . import config
+
 WHATSAPP_TEXTO = "(14) 99846-9800"
 WHATSAPP_LINK = "https://wa.me/5514998469800"
 SAUDACAO = "Oi, tudo bem? Aqui é o Victor, da DevStarter."
@@ -18,7 +20,6 @@ FECHAMENTO = (
     "No topo da página dá para comparar versões, da mais simples à mais completa. Se gostar de alguma, "
     "coloco no ar no domínio de vocês em poucos dias. Se não fizer sentido agora, sem problema."
 )
-QUEM_PROCURA = {"transportadoras": "uma transportadora"}
 PROBLEMAS = {
     "sem_https": 'Aparece como "não seguro" no navegador',
     "nao_responsivo": "Não se ajusta à tela do celular",
@@ -103,17 +104,20 @@ def _renderizar(blocos: list[tuple], link: str) -> tuple[str, str]:
 def montar(etapa: int, lead, prototipo: dict, link: str) -> tuple[str, str, str]:
     """(assunto, texto puro, HTML) da etapa: 1 = primeiro contato, 2 e 3 = lembretes na mesma conversa."""
     nome = prototipo["nome"]
-    assunto = f"Fiz um modelo de site para a {nome}"
+    nicho = config.NICHOS[lead["nicho"]]
+    para_nome = f"para a {nome}" if nicho.artigo else f"para {nome}"
+    de_nome = f"da {nome}" if nicho.artigo else f"de {nome}"
+    assunto = f"Fiz um modelo de site {para_nome}"
     if etapa > 1:
         if etapa == 2:
             blocos = [
-                ("p", f"Oi! Só queria saber se você conseguiu ver o modelo que fiz para a {nome}:"),
+                ("p", f"Oi! Só queria saber se você conseguiu ver o modelo que fiz {para_nome}:"),
                 ("botao", None),
                 ("p", f"Ele fica no ar até {_validade(prototipo)}. Se quiser mudar alguma coisa, é só me dizer."),
             ]
         else:
             blocos = [
-                ("p", f"Oi! Última mensagem sobre isso, prometo. O modelo da {nome} continua aqui até {_validade(prototipo)}:"),
+                ("p", f"Oi! Última mensagem sobre isso, prometo. O modelo {de_nome} continua aqui até {_validade(prototipo)}:"),
                 ("botao", None),
                 ("p", "Se em algum momento fizer sentido, é só responder este e-mail ou me chamar no WhatsApp."),
             ]
@@ -125,18 +129,25 @@ def montar(etapa: int, lead, prototipo: dict, link: str) -> tuple[str, str, str]
             "no lugar dele aparece uma página da hospedagem"
             if "site_estacionado" in motivos else "ele não está abrindo"
         )
-        quem = QUEM_PROCURA.get(lead["nicho"], "uma empresa")
         diagnostico = [(
             "p",
-            f"Tentei abrir o site da {nome} ({lead['dominio']}) e {situacao}. Talvez vocês já saibam, mas "
-            f"quem procura {quem} no Google e não encontra o site costuma pedir orçamento para outra.",
+            f"Tentei abrir o site {de_nome} ({lead['dominio']}) e {situacao}. Talvez vocês já saibam, mas "
+            f"quem procura {nicho.quem_procura} no Google e não encontra o site {nicho.quem_desiste}.",
         )]
         convite = "Por isso montei um modelo de como o site de vocês pode ficar, já com os dados da empresa:"
     elif lead["oportunidade"] == "site_fraco":
         itens = _problemas(motivos)
         quantos = "um ponto que pode estar custando" if len(itens) == 1 else "alguns pontos que podem estar custando"
-        diagnostico = [("p", f"Entrei no site da {nome} e notei {quantos} pedidos de orçamento:"), ("destaque", itens)]
+        diagnostico = [("p", f"Entrei no site {de_nome} e notei {quantos} {nicho.o_que_perde}:"), ("destaque", itens)]
         convite = "Montei um modelo de site novo para vocês, já com os dados da empresa:"
+    elif lead["oportunidade"] == "sem_site_provavel":
+        # Sabemos só que o e-mail cadastrado é gratuito: o texto não afirma que a empresa não tem site
+        diagnostico = [(
+            "p",
+            f"Pelo cadastro {de_nome}, não identifiquei um site de vocês. Hoje, quem procura {nicho.quem_procura} "
+            f"no Google e não encontra o site {nicho.quem_desiste}. Se vocês já têm um, pode desconsiderar.",
+        )]
+        convite = "Montei um modelo de como o site de vocês pode ficar, já com os dados da empresa:"
     else:
         raise ValueError(f"sem texto para a oportunidade {lead['oportunidade']}")
 

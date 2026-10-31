@@ -29,11 +29,14 @@ PALAVRAS_GENERICAS = {
     "transportes", "transporte", "transportadora", "trans", "logistica", "cargas", "ltda", "eireli",
     "comercio", "servicos", "empresa", "clinica", "medica", "medicos", "saude", "consultorio",
     "imoveis", "imobiliaria", "empreendimentos", "participacoes", "administracao",
+    "odontologia", "odontologica", "psicologia", "estetica", "beleza", "oficina", "mecanica", "instituto", "centro",
 }
 
 # Ordem importa: as mais longas primeiro, para 'transportadora' não virar 'adora' ao tirar 'transport'
 GENERICAS_DOMINIO = (
-    "transportadora", "transportes", "transporte", "logistica", "servicos", "express", "grupo", "trans", "log",
+    "transportadora", "transportes", "transporte", "odontologia", "psicologia", "consultorio", "imobiliaria",
+    "logistica", "estetica", "mecanica", "instituto", "oficina", "clinica", "servicos", "express", "imoveis",
+    "odonto", "centro", "grupo", "trans", "saude", "log",
 )
 
 RE_EMAIL = re.compile(r"^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)+$")

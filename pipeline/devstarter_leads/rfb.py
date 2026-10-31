@@ -190,7 +190,7 @@ def importar(conn, competencia: str | None, nichos: list[str], uf: str, ddds: li
     faltando = [a for a in ARQUIVOS if not (pasta / a).is_file()]
     if faltando:
         raise SystemExit(f"Faltam {len(faltando)} arquivos em {pasta}. Rode 'baixar' primeiro.")
-    cnae_nicho = {cnae: n for n in nichos for cnae in config.NICHOS[n]}
+    cnae_nicho = {cnae: n for n in nichos for cnae in config.NICHOS[n].cnaes}
 
     registros, usos_email, usos_dominio, invalidas = [], {}, {}, 0
     total_municipio, regiao_municipio = Counter(), Counter()
@@ -228,8 +228,8 @@ def importar(conn, competencia: str | None, nichos: list[str], uf: str, ddds: li
     for r in registros:
         basico = r["cnpj_basico"]
         opcao = simples.get(basico, [])
-        # Simples: [básico, opção simples, data, exclusão, opção MEI, ...]; MEI quase nunca compra site
-        if len(opcao) > 4 and opcao[4] == "S":
+        # Simples: [básico, opção simples, data, exclusão, opção MEI, ...]
+        if len(opcao) > 4 and opcao[4] == "S" and not config.NICHOS[r["nicho"]].incluir_mei:
             meis += 1
             continue
         empresa = empresas.get(basico) or [basico, "", "", "", "", "", ""]
