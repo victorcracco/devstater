@@ -57,7 +57,7 @@ Nossos quatro modelos atuais ainda têm vários destes vícios. **Não os copie 
 
 1. **Plano antes do código.** Escreva no PR: a ideia em uma frase, 4 a 6 cores em hex, as fontes e o layout em ASCII, para celular e computador.
 2. **Revise o plano.** Se alguma parte for o que você faria para qualquer site parecido, troque e diga o que mudou.
-3. **Construa e veja.** Tire prints em 375px e 1280px com os exemplos em `exemplos/prototipos/`, inclusive o mínimo, e anexe ao PR.
+3. **Construa e veja.** Rode a skill `devstarter-qa-visual` com os exemplos em `exemplos/prototipos/`, inclusive o mínimo, e anexe ao PR os prints em 375px e 1280px.
 4. **Critique.** Passe a lista de vícios acima. Se a primeira impressão for "foi feito por IA", refaça. Antes de entregar, tire um enfeite.
 5. **Compare com os outros modelos.** Lado a lado, precisam parecer de empresas diferentes. Se parecerem o mesmo site com outra cor, não está pronto.
 

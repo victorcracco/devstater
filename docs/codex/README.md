@@ -15,8 +15,8 @@ em ASCII) e pare para eu revisar. Trabalhe na branch codex/modelo-editorial.
 Depois de aprovar o plano:
 
 ```
-Plano aprovado. Construa o modelo, teste com todas as empresas de exemplo e anexe ao PR prints em 375px e
-1280px, com sua crítica pela lista de vícios da skill devstarter-design.
+Plano aprovado. Construa o modelo e rode $devstarter-qa-visual com todas as empresas de exemplo. Anexe ao PR
+o resultado, os prints em 375px e 1280px e sua crítica pela lista de vícios da skill devstarter-design.
 ```
 
 Troque `editorial` pelos outros modelos do arquivo, um por PR.
@@ -26,8 +26,9 @@ Troque `editorial` pelos outros modelos do arquivo, um por PR.
 ```
 Leia AGENTS.md e docs/codex/nichos/psicologia.md. Crie o nicho descrito lá em
 lib/prototipos/nichos/psicologia.ts, usando lib/prototipos/nichos/transportadoras.ts como referência, e
-registre-o em lib/prototipos/nichos/index.ts. Crie os dois exemplos em exemplos/prototipos/ e teste nos
-quatro modelos, no celular e no computador. Trabalhe na branch codex/nicho-psicologia e abra um PR.
+registre-o em lib/prototipos/nichos/index.ts. Crie os dois exemplos em exemplos/prototipos/. Antes de abrir
+o PR, rode $devstarter-revisar-nicho e $devstarter-qa-visual e inclua os resultados nele. Trabalhe na branch
+codex/nicho-psicologia e abra um PR.
 ```
 
 Troque `psicologia` por:

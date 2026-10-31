@@ -38,4 +38,4 @@ Para quem tem muitos serviços. Os serviços vêm logo no topo, como o conteúdo
 
 ## Antes de entregar
 
-Teste com todos os exemplos em `exemplos/prototipos/`, inclusive o mínimo, no celular (375px) e no computador. O modelo precisa continuar bom com nome muito longo, sem foto carregada e sem WhatsApp.
+Rode a skill `devstarter-qa-visual` com todos os exemplos em `exemplos/prototipos/`, inclusive o mínimo. O modelo precisa continuar bom com nome muito longo, sem foto carregada e sem WhatsApp.

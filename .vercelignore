@@ -3,3 +3,5 @@ docs
 exemplos
 AGENTS.md
 .agents
+CLAUDE.md
+scripts/ligar-skills-claude.ps1

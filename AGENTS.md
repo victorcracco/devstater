@@ -46,6 +46,8 @@ Ficam em `.agents/skills/`. Use `$nome-da-skill` para chamar uma pelo nome.
 |---|---|
 | `devstarter-design` | **Sempre** ao criar ou mudar um modelo visual: como não ter cara de IA |
 | `frontend-design` | Junto com a anterior: o método geral de direção visual |
+| `devstarter-qa-visual` | **Sempre** antes de entregar um modelo ou um nicho: testa no celular e no computador |
+| `devstarter-revisar-nicho` | **Sempre** ao criar ou mudar um nicho: fatos, regras do conselho e textos |
 | `devstarter-seo` | Estrutura dos modelos e publicação de sites de clientes |
 | `seo-local`, `seo-schema`, `seo-page` | Detalhes de SEO local, dados estruturados e SEO de página |
 
@@ -79,6 +81,8 @@ npx tsc --noEmit
 npx eslint "app/(prototipos)" lib/prototipos --quiet
 npm run build
 ```
+
+Depois rode a skill `devstarter-qa-visual`. Em nichos, rode antes a `devstarter-revisar-nicho`. Inclua os resultados no PR.
 
 Cada nicho novo precisa de **dois exemplos**: um completo e um mínimo, sem WhatsApp, sem endereço e com nome e cidade longos.
 
