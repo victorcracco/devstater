@@ -21,10 +21,23 @@ docker compose run --rm leads enriquecer --nicho transportadoras
 docker compose run --rm leads prototipos --nicho transportadoras --oportunidade site_fora_do_ar,site_fraco
 docker compose run --rm leads publicar
 
+# 5. Envio: nada sai sem aprovação. Confira o texto antes
+docker compose run --rm leads previa --slug <slug> [--etapa 2]
+docker compose run --rm leads aprovar --slugs <slug1>,<slug2>   # ou --oportunidade site_fraco, ou --todos
+docker compose run --rm leads ciclo --simular                   # mostra o que faria
+docker compose run --rm leads situacao                          # fila, envios, respostas, pausa
+docker compose run --rm leads pausar / retomar / descadastrar --email <e-mail>
+
 # Números e exportação para o Excel
 docker compose run --rm leads resumo --nicho transportadoras
 docker compose run --rm leads exportar --nicho transportadoras --saida /data/transportadoras.csv
 ```
+
+O `ciclo` roda a cada 10 minutos pelo cron do servidor: lê as respostas novas por IMAP (só leitura), confere a trava, envia no máximo um e-mail (só com `ENVIO_ATIVO=1`, em dia útil, dentro da `JANELA` e do `LIMITE_DIARIO`, com intervalo aleatório) e publica os protótipos uma vez por dia. Lembretes saem 3 e depois 5 dias úteis após o e-mail anterior, na mesma conversa, e param quando a pessoa responde. "sair" e e-mails devolvidos vão para `descadastros`; 3 devoluções (ou 5%) em 14 dias ou qualquer reclamação pausam tudo.
+
+Variáveis no `.env` do servidor: `SMTP_USUARIO`, `SMTP_SENHA` (senha de app do Zoho, também usada no IMAP), `REMETENTE`, `ENVIO_ATIVO`, `LIMITE_DIARIO`, `JANELA`, `GROQ_API_KEY` (e opcionais `GEMINI_API_KEY`, `OPENROUTER_API_KEY`, `OLLAMA_URL`), além das do Supabase. Para gravar a senha e a chave sem expô-las no terminal: `ssh -t vps bash /opt/devstarter-pipeline/configurar.sh`.
+
+Cada protótipo abre no modelo indicado pelo tamanho da empresa (`modelo_de_site` em `prototipos.py`) e o seletor no topo da página permite comparar os outros: `cartao`, `simples`, `orcamento` e `completo`.
 
 Os protótipos ficam em `devstarter.com.br/p/<slug>`. O repositório é público, então os dados dos prospects nunca vão para o Git: ficam no `data/` do servidor e no Supabase (`supabase.sql`). As chaves ficam só no `.env` do servidor.
 

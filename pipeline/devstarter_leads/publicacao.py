@@ -16,11 +16,12 @@ def publicar() -> dict:
     linhas = [json.loads(a.read_text()) for a in sorted(prototipos.PASTA.glob("*.json"))]
     if not linhas:
         return {"publicados": 0}
-    # A função confere o token (só o hash dele fica no banco) e faz upsert pelo slug
+    # A função confere o token (só o hash dele fica no banco), faz upsert pelo slug e apaga do
+    # banco os protótipos que não existem mais aqui (descartados ao gerar de novo)
     resposta = httpx.post(
         f"{url}/rest/v1/rpc/publicar_prototipos",
         headers={"apikey": chave},
-        json={"p_token": token, "p_linhas": linhas},
+        json={"p_token": token, "p_linhas": linhas, "p_sincronizar": True},
         timeout=60,
     )
     resposta.raise_for_status()

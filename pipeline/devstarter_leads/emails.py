@@ -19,16 +19,22 @@ GRATUITOS = {
 DIGITACAO_ERRADA = {
     "gamil.com", "gmal.com", "gmial.com", "gnail.com", "gmaill.com", "gmail.co", "gmail.com.br",
     "hotmal.com", "hotmai.com", "hotmial.com", "hotmaill.com", "homail.com", "hormail.com",
-    "hotamil.com", "hotmail.co", "hotmail.com.b", "outlok.com", "yaho.com.br", "yahoo.com.b",
+    "hotamil.com", "hotmail.co", "hotmail.com.b", "outlok.com", "outllok.com", "outllok.com.br",
+    "outlook.com.b", "yaho.com.br", "yahoo.com.b",
     "uolcom.br", "uol.com", "bol.com", "terra.com", "tera.com.br", "gmail.con", "hotmail.con",
 }
 
 # Palavras comuns em razão social que não identificam a empresa
 PALAVRAS_GENERICAS = {
-    "transportes", "transporte", "transportadora", "logistica", "cargas", "ltda", "eireli",
+    "transportes", "transporte", "transportadora", "trans", "logistica", "cargas", "ltda", "eireli",
     "comercio", "servicos", "empresa", "clinica", "medica", "medicos", "saude", "consultorio",
     "imoveis", "imobiliaria", "empreendimentos", "participacoes", "administracao",
 }
+
+# Ordem importa: as mais longas primeiro, para 'transportadora' não virar 'adora' ao tirar 'transport'
+GENERICAS_DOMINIO = (
+    "transportadora", "transportes", "transporte", "logistica", "servicos", "express", "grupo", "trans", "log",
+)
 
 RE_EMAIL = re.compile(r"^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)+$")
 # Escritórios de contabilidade costumam cadastrar o próprio e-mail para os clientes
@@ -41,16 +47,39 @@ def _normalizar(texto: str) -> str:
     return re.sub(r"[^a-z0-9 ]", "", sem_acento.lower())
 
 
+def _nucleo(texto: str) -> str:
+    """Tira as palavras genéricas de um domínio ou nome: 'voxlogistica' -> 'vox', 'transrn' -> 'rn'."""
+    for generica in GENERICAS_DOMINIO:
+        texto = texto.replace(generica, "")
+    return texto
+
+
 def _dominio_da_empresa(dominio: str, nomes: tuple[str, ...]) -> bool:
     """O domínio parece ser da própria empresa, isto é, o nome dela aparece nele (ou vice-versa)?"""
     rotulo = dominio.split(".")[0]
+    normalizados = [_normalizar(n) for n in nomes if n]
+    # Siglas: 'VOX TRANSPORTADORA' com voxlogistica.com.br, 'RM TRANSPORTE' com rmservicos.log.br
+    nucleo = _nucleo(rotulo)
+    if len(nucleo) >= 2 and nucleo in {_nucleo(p) for n in normalizados for p in n.split()}:
+        return True
     if len(rotulo) < 4:
         return False
-    normalizados = [_normalizar(n) for n in nomes if n]
     if any(rotulo in n.replace(" ", "") for n in normalizados):
         return True
     palavras = {p for n in normalizados for p in n.split() if len(p) >= 4 and p not in PALAVRAS_GENERICAS}
     return any(p in rotulo for p in palavras)
+
+
+def site_da_empresa(dominio: str, titulo: str | None, nomes: tuple[str, ...]) -> bool:
+    """O domínio (ou o título do site nele) tem o nome da empresa? Evita mandar 'o site da sua empresa'
+    sobre o domínio de outro negócio, como o e-mail de uma cerâmica cadastrado por uma transportadora."""
+    if _dominio_da_empresa(dominio, nomes):
+        return True
+    titulo_normalizado = _normalizar(titulo or "")
+    palavras = {
+        p for n in nomes if n for p in _normalizar(n).split() if len(p) >= 4 and p not in PALAVRAS_GENERICAS
+    }
+    return any(p in titulo_normalizado.split() for p in palavras)
 
 
 def classificar(email: str, usos_email: dict, usos_dominio: dict, nomes: tuple[str, ...] = ()) -> str:

@@ -2,7 +2,7 @@
 import argparse
 import time
 
-from . import config, db, enriquecimento, prototipos, publicacao, relatorio, rfb
+from . import config, db, enriquecimento, envio, prototipos, publicacao, relatorio, respostas, rfb
 
 
 def _lista(valor: str) -> list[str]:
@@ -44,6 +44,30 @@ def main() -> None:
 
     sub.add_parser("publicar", help="envia os protótipos gerados para o Supabase (lidos pelo site)")
 
+    a = sub.add_parser("aprovar", help="libera protótipos para envio (nada sai sem aprovação)")
+    a.add_argument("--slugs", type=_lista)
+    a.add_argument("--oportunidade", type=_lista)
+    a.add_argument("--todos", action="store_true", help="aprova todos os protótipos ainda não aprovados")
+
+    v = sub.add_parser("previa", help="mostra o e-mail que seria enviado para um protótipo")
+    v.add_argument("--slug", required=True)
+    v.add_argument("--etapa", type=int, default=1, choices=(1, 2, 3))
+    v.add_argument("--html", action="store_true", help="mostra a versão HTML em vez do texto puro")
+
+    c = sub.add_parser("ciclo", help="lê respostas, envia no máximo um e-mail e publica (roda pelo cron)")
+    c.add_argument("--simular", action="store_true", help="mostra o que faria, sem enviar nem publicar")
+
+    t = sub.add_parser("testar", help="confere as credenciais do Zoho e pode mandar um e-mail de teste")
+    t.add_argument("--para", help="endereço que recebe o e-mail de teste; sem ele, só confere o login")
+
+    sub.add_parser("respostas", help="lê agora as respostas novas da caixa de entrada")
+    sub.add_parser("situacao", help="fila, envios, respostas e pausa")
+    pa = sub.add_parser("pausar", help="para todos os envios até 'retomar'")
+    pa.add_argument("--motivo", default="pausado manualmente")
+    sub.add_parser("retomar", help="libera os envios depois de uma pausa")
+    d = sub.add_parser("descadastrar", help="bloqueia um e-mail para sempre")
+    d.add_argument("--email", required=True)
+
     args = p.parse_args()
     inicio = time.monotonic()
     if args.comando == "baixar":
@@ -68,6 +92,36 @@ def main() -> None:
         elif args.comando == "exportar":
             n = relatorio.exportar(conn, args.saida, args.nicho, args.oportunidade)
             print(f"{n} leads exportados para {args.saida}")
+        elif args.comando == "aprovar":
+            if not (args.slugs or args.oportunidade or args.todos):
+                p.error("diga o que aprovar: --slugs, --oportunidade ou --todos")
+            print(f"{envio.aprovar(conn, args.slugs, args.oportunidade)} protótipos aprovados para envio")
+        elif args.comando == "previa":
+            print(envio.previa(conn, args.slug, args.etapa, args.html))
+        elif args.comando == "ciclo":
+            print(envio.ciclo(conn, args.simular))
+        elif args.comando == "testar":
+            print(envio.testar(conn, args.para))
+        elif args.comando == "respostas":
+            print(respostas.processar(conn))
+        elif args.comando == "situacao":
+            print(envio.situacao(conn))
+        elif args.comando == "pausar":
+            db.gravar_controle(conn, "pausado", args.motivo)
+            print("Envios pausados")
+        elif args.comando == "retomar":
+            db.gravar_controle(conn, "pausado", None)
+            print("Envios liberados")
+        elif args.comando == "descadastrar":
+            with conn:
+                conn.execute(
+                    "INSERT OR IGNORE INTO descadastros (email, motivo) VALUES (?, 'manual')", (args.email.lower(),)
+                )
+                conn.execute(
+                    "UPDATE leads SET status = 'descadastrado', atualizado_em = datetime('now') WHERE email = ?",
+                    (args.email.lower(),),
+                )
+            print(f"{args.email} bloqueado")
     print(f"Tempo: {time.monotonic() - inicio:.0f}s")
 
 

@@ -14,13 +14,17 @@ CAMPOS_SITE = (
 )
 
 
-def decidir(email_tipo: str, mx: bool | None, site: dict) -> tuple[str, list[str]]:
+def decidir(email_tipo: str, mx: bool | None, site: dict, dominio_proprio: bool = True) -> tuple[str, list[str]]:
     if email_tipo in DESCARTE:
         return "descartar", [DESCARTE[email_tipo]]
     if mx is False:
         return "descartar", ["dominio_nao_recebe_email"]
     if email_tipo in SEM_DOMINIO:
         return "sem_site_provavel", ["sem_dominio_proprio"]
+    # E-mail num domínio de outro negócio (cerâmica, franquia, empresa do grupo): não dá para falar
+    # em "o site de vocês" sobre ele
+    if not dominio_proprio:
+        return "revisar", ["dominio_de_terceiro"]
     status = site.get("site_status")
     if status == "rede_social":
         return "sem_site_provavel", ["dominio_aponta_para_rede_social"]
@@ -47,7 +51,7 @@ def _int(valor: bool | None) -> int | None:
 
 def enriquecer(conn, nicho: str, limite: int | None = None, refazer: bool = False) -> dict:
     leads = conn.execute(
-        "SELECT cnpj, email, email_tipo FROM leads"
+        "SELECT cnpj, email, email_tipo, razao_social, nome_fantasia FROM leads"
         " WHERE nicho = ? AND (? OR enriquecido_em IS NULL) ORDER BY cnpj LIMIT ?",
         (nicho, int(refazer), limite or -1),
     ).fetchall()
@@ -70,7 +74,10 @@ def enriquecer(conn, nicho: str, limite: int | None = None, refazer: bool = Fals
         for lead in leads:
             d = dominio(lead)
             site = avaliacoes.get(d, {}) if lead["email_tipo"] == "corporativo" else {}
-            oportunidade, motivos = decidir(lead["email_tipo"], mx.get(d), site)
+            proprio = lead["email_tipo"] != "corporativo" or emails.site_da_empresa(
+                d, site.get("site_titulo"), (lead["razao_social"], lead["nome_fantasia"])
+            )
+            oportunidade, motivos = decidir(lead["email_tipo"], mx.get(d), site, proprio)
             conn.execute(
                 f"""UPDATE leads SET dominio = ?, email_mx = ?, {atribuicoes},
                         oportunidade = ?, motivos = ?,

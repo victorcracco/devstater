@@ -33,7 +33,7 @@ ACENTOS = {
     "chacara": "Chácara", "americo": "Américo", "ipes": "Ipês", "decio": "Décio", "tupa": "Tupã",
     "falcao": "Falcão", "leao": "Leão", "simoes": "Simões", "goncalo": "Gonçalo", "lazaro": "Lázaro",
     "liquido": "Líquido", "petroleo": "Petróleo", "transito": "Trânsito", "veiculos": "Veículos",
-    "comercial": "Comercial", "operacoes": "Operações", "solucoes": "Soluções",
+    "comercial": "Comercial", "operacoes": "Operações", "solucoes": "Soluções", "garca": "Garça",
 }
 RE_INICIAIS = re.compile(r"([A-Za-z]\.)+[A-Za-z]?\.?")
 RE_ROMANO = re.compile(r"(i{1,3}|iv|vi{0,3}|ix|x)", re.I)
@@ -127,6 +127,16 @@ def _slug(nome: str) -> str:
     return f"{base}-{sufixo}"
 
 
+def modelo_de_site(lead) -> str:
+    """Modelo em que o protótipo abre, pelo tamanho da empresa; o prospect pode comparar os outros."""
+    capital = lead["capital_social"] or 0
+    if capital >= 1_000_000 or (lead["porte"] == "demais" and capital >= 50_000):
+        return "completo"
+    if lead["porte"] in ("pequeno", "demais") or capital >= 300_000:
+        return "orcamento"
+    return "simples" if capital >= 50_000 else "cartao"
+
+
 def _chaves(lead, telefone: str | None) -> set[str]:
     """Identificam a mesma empresa em CNPJs diferentes: o domínio próprio (ou o e-mail) e o telefone."""
     email = lead["email"] or ""
@@ -195,6 +205,7 @@ def gerar(conn, nicho: str, oportunidades: list[str], dias: int = 45, limite: in
                 "cnpj": _cnpj(lead["cnpj"]),
                 "desde": int(lead["data_inicio"][:4]) if lead["data_inicio"] else None,
                 "cnae": lead["cnae"],
+                "modelo": modelo_de_site(lead),
                 "expiraEm": expira,
             }
             dados = {k: v for k, v in dados.items() if v is not None}

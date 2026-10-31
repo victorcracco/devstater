@@ -41,7 +41,9 @@ CREATE TABLE IF NOT EXISTS leads (
     emails_site TEXT,
     oportunidade TEXT,        -- sem_site_provavel | site_fora_do_ar | site_fraco | site_ok | revisar | descartar
     motivos TEXT,             -- JSON com o que embasou a oportunidade
-    status TEXT NOT NULL DEFAULT 'encontrado',  -- encontrado | enriquecido | prototipo | ...
+    -- encontrado | enriquecido | prototipo | aprovado | contatado | respondeu | interessado
+    -- | sem_interesse | descadastrado | devolvido
+    status TEXT NOT NULL DEFAULT 'encontrado',
     prototipo_slug TEXT,
     prototipo_expira_em TEXT,
     competencia_rfb TEXT,
@@ -57,6 +59,35 @@ CREATE TABLE IF NOT EXISTS descadastros (
     email TEXT PRIMARY KEY,
     motivo TEXT,
     criado_em TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- Cada e-mail enviado (etapa 1 = primeiro contato, 2 e 3 = lembretes na mesma conversa)
+CREATE TABLE IF NOT EXISTS envios (
+    id INTEGER PRIMARY KEY,
+    cnpj TEXT NOT NULL,
+    email TEXT NOT NULL,
+    etapa INTEGER NOT NULL,
+    assunto TEXT NOT NULL,
+    message_id TEXT NOT NULL,
+    enviado_em TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_envios_cnpj ON envios (cnpj);
+
+-- Respostas recebidas (só um trecho do texto, para classificar e auditar)
+CREATE TABLE IF NOT EXISTS respostas (
+    id INTEGER PRIMARY KEY,
+    cnpj TEXT,
+    remetente TEXT NOT NULL,
+    assunto TEXT,
+    classificacao TEXT NOT NULL,  -- interessado | sem_interesse | respondeu | ausente | descadastro | reclamacao | devolvido
+    trecho TEXT,
+    recebida_em TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- Estado do ciclo: pausa, último e-mail lido, próximo horário de envio...
+CREATE TABLE IF NOT EXISTS controle (
+    chave TEXT PRIMARY KEY,
+    valor TEXT
 );
 """
 
@@ -85,6 +116,22 @@ def conectar() -> sqlite3.Connection:
             conn.execute(f"ALTER TABLE leads ADD COLUMN {nome} {tipo}")
     conn.execute("CREATE UNIQUE INDEX IF NOT EXISTS idx_leads_prototipo ON leads (prototipo_slug)")
     return conn
+
+
+def ler_controle(conn: sqlite3.Connection, chave: str) -> str | None:
+    linha = conn.execute("SELECT valor FROM controle WHERE chave = ?", (chave,)).fetchone()
+    return linha[0] if linha else None
+
+
+def gravar_controle(conn: sqlite3.Connection, chave: str, valor: str | None) -> None:
+    with conn:
+        if valor is None:
+            conn.execute("DELETE FROM controle WHERE chave = ?", (chave,))
+        else:
+            conn.execute(
+                "INSERT INTO controle (chave, valor) VALUES (?, ?) ON CONFLICT (chave) DO UPDATE SET valor = excluded.valor",
+                (chave, valor),
+            )
 
 
 def salvar_leads(conn: sqlite3.Connection, leads: list[dict]) -> None:

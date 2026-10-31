@@ -33,8 +33,9 @@ $$;
 revoke all on function public.buscar_prototipo(text) from public;
 grant execute on function public.buscar_prototipo(text) to anon, authenticated;
 
--- Escrita pelo pipeline, autenticada pelo token guardado no servidor
-create function public.publicar_prototipos(p_token text, p_linhas jsonb)
+-- Escrita pelo pipeline, autenticada pelo token guardado no servidor. Com p_sincronizar, apaga
+-- os protótipos que o pipeline descartou (migração "prototipos_sincronizar")
+create function public.publicar_prototipos(p_token text, p_linhas jsonb, p_sincronizar boolean default false)
 returns integer
 language plpgsql
 security definer
@@ -51,6 +52,11 @@ begin
     raise exception 'token inválido' using errcode = '28000';
   end if;
 
+  if p_sincronizar then
+    delete from public.prototipos
+    where slug not in (select l->>'slug' from jsonb_array_elements(p_linhas) as l);
+  end if;
+
   insert into public.prototipos (slug, nicho, dados, expira_em, atualizado_em)
   select l->>'slug', l->>'nicho', l, (l->>'expiraEm')::date, now()
   from jsonb_array_elements(p_linhas) as l
@@ -64,5 +70,5 @@ begin
   return total;
 end;
 $$;
-revoke all on function public.publicar_prototipos(text, jsonb) from public;
-grant execute on function public.publicar_prototipos(text, jsonb) to anon, authenticated;
+revoke all on function public.publicar_prototipos(text, jsonb, boolean) from public;
+grant execute on function public.publicar_prototipos(text, jsonb, boolean) to anon, authenticated;
