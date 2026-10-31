@@ -61,7 +61,7 @@ function perfil(cnae: string, cidade: string): Perfil {
         seloSobre: "Produtos perigosos",
         servicos: [
           { icone: "chama", titulo: "Produtos perigosos", descricao: "Cargas classificadas transportadas com a documentação e a sinalização exigidas pela ANTT." },
-          { icone: "escudo", titulo: "Motoristas habilitados", descricao: "Condutores com curso MOPP para o transporte de produtos perigosos." },
+          { icone: "escudo", titulo: "Orientação antes da coleta", descricao: "Conte qual é o produto e combinamos o que é preciso para o transporte." },
           CARGA_FECHADA,
           ATENDIMENTO_EMPRESAS,
         ],
@@ -149,7 +149,7 @@ function montarSite(d: DadosPrototipo): ConteudoPrototipo {
         { icone: "calendario", ...tempo, cor: "text-orange-500" },
         { icone: "pino", valor: d.uf, rotulo: `Sede em ${d.cidade}`, cor: "text-blue-500" },
         { icone: "selo", valor: "Ativa", rotulo: "Empresa regular na Receita", cor: "text-emerald-500" },
-        { icone: "atendimento", valor: "Direto", rotulo: "Atendimento com quem decide", cor: "text-violet-500" },
+        { icone: "atendimento", valor: "Direto", rotulo: "Fale com a nossa equipe", cor: "text-violet-500" },
       ],
     },
     servicos: {
@@ -188,13 +188,13 @@ function montarSite(d: DadosPrototipo): ConteudoPrototipo {
       rotulo: "Diferenciais",
       titulo: "Sua carga em boas mãos.",
       destaque: "Do orçamento à entrega.",
-      texto: `Somos de ${d.cidade}, conhecemos as estradas da região e tratamos cada cliente pelo nome.`,
+      texto: `Somos de ${d.cidade} e atendemos a região com conversa direta, do orçamento à entrega.`,
       numeros: [tempo, { valor: d.uf, rotulo: `Sede em ${d.cidade}` }],
       itens: [
-        { icone: "atendimento", titulo: "Atendimento direto", descricao: "Você fala com quem decide, sem central de atendimento e sem espera." },
-        { icone: "escudo", titulo: "Carga segurada", descricao: "Transporte com seguro de responsabilidade civil do transportador (RCTR-C)." },
+        { icone: "atendimento", titulo: "Atendimento direto", descricao: "Você conversa direto com a nossa equipe para combinar o transporte." },
+        { icone: "escudo", titulo: "Cuidado no transporte", descricao: "Atenção no manuseio, da coleta à entrega." },
         { icone: "relogio", titulo: "Prazo combinado", descricao: "Prazo de coleta e de entrega acertado antes de a carga sair." },
-        { icone: "pino", titulo: "Conhecemos a região", descricao: `Rotas planejadas por quem roda todos os dias por ${d.cidade} e região.` },
+        { icone: "pino", titulo: "Empresa da região", descricao: `Sede em ${localSede}, perto de quem precisa do transporte.` },
       ],
     },
     contato: {
