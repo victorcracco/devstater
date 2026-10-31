@@ -1,0 +1,17 @@
+{
+  "slug": "exemplo-transportadora",
+  "nicho": "transportadoras",
+  "nome": "Transportes Exemplo",
+  "cidade": "Bauru",
+  "uf": "SP",
+  "endereco": "Rua Fictícia, 100 – Centro",
+  "cep": "17000-000",
+  "telefone": "(14) 3000-0000",
+  "whatsapp": "5514900000000",
+  "email": "contato@exemplo.com.br",
+  "cnpj": "00.000.000/0001-00",
+  "desde": 2010,
+  "cnae": "4930202",
+  "modelo": "completo",
+  "expiraEm": "2099-12-31"
+}

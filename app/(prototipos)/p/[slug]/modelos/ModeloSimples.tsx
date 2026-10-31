@@ -1,13 +1,13 @@
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { ICONES } from "@/app/(clientes)/transportes/components/icones";
-import { linkContato, type SiteTransportadora } from "@/app/(clientes)/transportes/site";
-import type { DadosPrototipo } from "@/lib/prototipos/dados";
-import { linkLigar, linkMapa } from "@/lib/prototipos/transportadora";
+import { linkContato } from "@/lib/prototipos/conteudo";
+import { linkLigar, linkMapa } from "@/lib/prototipos/utilidades";
+import type { PropsModelo } from "./index";
 
 // Para a empresa pequena já estruturada: uma página clara e tradicional, sem excessos
-export default function ModeloSimples({ site, dados }: { site: SiteTransportadora; dados: DadosPrototipo }) {
-  const { contato, hero, servicos, sobre } = site;
-  const principal = linkContato(contato, `Olá, ${dados.nome}! Gostaria de um orçamento.`);
+export default function ModeloSimples({ site, dados }: PropsModelo) {
+  const { contato, conversao, hero, servicos, sobre } = site;
+  const principal = linkContato(contato, conversao.mensagem);
   const ligar = linkLigar(contato.telefone);
 
   return (
@@ -45,7 +45,7 @@ export default function ModeloSimples({ site, dados }: { site: SiteTransportador
                   rel="noopener noreferrer"
                   className="rounded-lg bg-[#0B3C5D] px-6 py-3.5 text-center font-bold text-white transition-opacity hover:opacity-90"
                 >
-                  Pedir orçamento
+                  {conversao.acao}
                 </a>
               )}
               <a href="#servicos" className="rounded-lg border border-slate-300 px-6 py-3.5 text-center font-bold text-slate-800 transition-colors hover:bg-slate-50">
@@ -54,7 +54,7 @@ export default function ModeloSimples({ site, dados }: { site: SiteTransportador
             </div>
           </div>
           <div className="relative mb-6 md:mb-0">
-            <img src={hero.imagem} alt="Caminhão na estrada" className="aspect-[4/3] w-full rounded-2xl object-cover" />
+            <img src={hero.imagem} alt={hero.imagemAlt} className="aspect-[4/3] w-full rounded-2xl object-cover" />
             {dados.desde && (
               <div className="absolute -bottom-5 left-5 rounded-xl bg-white px-5 py-3 shadow-lg">
                 <p className="font-display text-2xl font-bold text-[#0B3C5D]">Desde {dados.desde}</p>
@@ -133,6 +133,7 @@ export default function ModeloSimples({ site, dados }: { site: SiteTransportador
       <footer className="px-6 py-6 text-center text-sm text-slate-500">
         © {new Date().getFullYear()} {dados.nome}
         {contato.cnpj ? ` · CNPJ ${contato.cnpj}` : ""}
+        {contato.registro ? ` · ${contato.registro}` : ""}
       </footer>
     </div>
   );

@@ -1,9 +1,12 @@
-import { novaVia, type Icone, type SiteTransportadora } from "@/app/(clientes)/transportes/site";
-import type { DadosPrototipo } from "./dados";
+import { novaVia } from "@/app/(clientes)/transportes/site";
+import type { ConteudoPrototipo, Icone } from "../conteudo";
+import type { DadosPrototipo } from "../dados";
+import { dividirMarca } from "../utilidades";
+import type { Nicho } from "./index";
 
 // Conteúdo do protótipo de uma transportadora real. Só usa fatos do cadastro (nome, cidade,
 // ano de abertura, atividade pelo CNAE) e textos genéricos: nada de números, certificações
-// ou depoimentos inventados no nome da empresa.
+// ou depoimentos inventados no nome da empresa. É a referência para criar novos nichos.
 
 type Perfil = {
   atividade: string;
@@ -102,28 +105,7 @@ function perfil(cnae: string, cidade: string): Perfil {
   }
 }
 
-export function linkLigar(telefone?: string): string | undefined {
-  return telefone ? `tel:+55${telefone.replace(/\D/g, "")}` : undefined;
-}
-
-export function linkMapa(d: DadosPrototipo): string {
-  const destino = [d.endereco, d.cidade, d.uf].filter(Boolean).join(", ");
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destino)}`;
-}
-
-/** Até duas letras do nome, no lugar do logo que ainda não temos. */
-export function iniciais(nome: string): string {
-  const palavras = nome.split(" ").filter((p) => p.length > 2 || p === p.toUpperCase());
-  return (palavras.length ? palavras : [nome]).slice(0, 2).map((p) => p[0].toUpperCase()).join("");
-}
-
-function marca(nome: string): SiteTransportadora["marca"] {
-  const palavras = nome.split(" ");
-  if (palavras.length < 2) return { texto: nome, destaque: "" };
-  return { texto: `${palavras.slice(0, -1).join(" ")} `, destaque: palavras[palavras.length - 1] };
-}
-
-export function montarSiteTransportadora(d: DadosPrototipo): SiteTransportadora {
+function montarSite(d: DadosPrototipo): ConteudoPrototipo {
   const p = perfil(d.cnae, d.cidade);
   const anos = d.desde ? new Date().getFullYear() - d.desde : 0;
   const tempo = anos >= 2
@@ -134,7 +116,8 @@ export function montarSiteTransportadora(d: DadosPrototipo): SiteTransportadora 
 
   return {
     inicio: "#",
-    marca: marca(d.nome),
+    icone: "caminhao",
+    marca: dividirMarca(d.nome),
     nomeCompleto: d.nome,
     menu: [
       { nome: "Sobre", href: "#sobre" },
@@ -150,6 +133,7 @@ export function montarSiteTransportadora(d: DadosPrototipo): SiteTransportadora 
       depois: p.heroDepois,
       subtitulo: `A ${d.nome} cuida da ${p.objeto} com atendimento direto, do orçamento à entrega.`,
       imagem: novaVia.hero.imagem,
+      imagemAlt: "Caminhão na estrada",
       ctaPrincipal: "Pedir orçamento",
       ctaSecundario: "Nossos serviços",
     },
@@ -232,5 +216,27 @@ export function montarSiteTransportadora(d: DadosPrototipo): SiteTransportadora 
         { nome: "Pedir orçamento", href: "#cotacao" },
       ],
     },
+    conversao: {
+      acao: "Pedir orçamento",
+      mensagem: `Olá, ${d.nome}! Gostaria de um orçamento.`,
+      formulario: {
+        titulo: "Peça seu orçamento",
+        texto: "Preencha e envie direto para a nossa equipe.",
+        campos: [
+          { id: "nome", rotulo: "Seu nome", placeholder: "Como podemos te chamar?", naMensagem: "Nome" },
+          { id: "origem", rotulo: "Origem", placeholder: "Cidade de coleta", naMensagem: "Origem" },
+          { id: "destino", rotulo: "Destino", placeholder: "Cidade de entrega", naMensagem: "Destino" },
+          { id: "carga", rotulo: "O que precisa transportar", placeholder: "Tipo e quantidade", naMensagem: "Transporte" },
+        ],
+      },
+      tituloPassos: "Como funciona",
+      passos: [
+        { titulo: "Conte o que precisa", texto: "Informe origem, destino e o que vai ser transportado." },
+        { titulo: "Receba prazo e valor", texto: "Nossa equipe responde com a melhor opção para o seu caso." },
+        { titulo: "Coleta e entrega", texto: "Com tudo combinado, cuidamos do transporte até o destino." },
+      ],
+    },
   };
 }
+
+export const transportadoras: Nicho = { id: "transportadoras", montarSite };

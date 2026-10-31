@@ -1,85 +1,14 @@
-// Conteúdo do template de transportadora. O demo da NovaVia (/transportes) e os
-// protótipos gerados para prospects (/p/[slug]) usam esta mesma estrutura.
+// Conteúdo fictício do demo da NovaVia (/transportes). A estrutura fica em lib/prototipos/conteudo.ts
+// e é a mesma usada pelos protótipos gerados para prospects (/p/[slug]).
+import type { ConteudoSite } from "@/lib/prototipos/conteudo";
 
-export type Icone =
-  | "caminhao" | "setas" | "armazem" | "rota" | "floco" | "chama" | "caixa" | "peso"
-  | "pessoas" | "premio" | "grafico" | "escudo" | "pino" | "relogio" | "atendimento"
-  | "calendario" | "predio" | "caixas" | "sofa" | "selo";
-
-type Item = { icone: Icone; titulo: string; descricao: string };
-
-export type SiteTransportadora = {
-  inicio: string;
-  marca: { texto: string; destaque: string };
-  nomeCompleto: string;
-  menu: { nome: string; href: string }[];
-  ctaMenu: { rotulo: string; href: string };
-  hero: {
-    selo: string;
-    antes: string;
-    destaque: string;
-    depois: string;
-    subtitulo: string;
-    imagem: string;
-    ctaPrincipal: string;
-    ctaSecundario: string;
-  };
-  sobre: {
-    rotulo: string;
-    titulo: string[];
-    paragrafos: string[];
-    selos: string[];
-    numeros: { icone: Icone; valor: string; rotulo: string; cor: string }[];
-  };
-  servicos: {
-    rotulo: string;
-    titulo: string;
-    subtitulo: string;
-    itens: Item[];
-    tiposCarga?: { titulo: string; itens: { icone: Icone; nome: string; cor: string; fundo: string }[] };
-  };
-  cobertura: {
-    rotulo: string;
-    titulo: string;
-    subtitulo: string;
-    regioes: { nome: string; itens: string[]; selo: string; corSelo: string; destaque: boolean }[];
-    consulta: { titulo: string; texto: string; rotulo: string; mensagem: string };
-    destaques: { rotulo: string; valor: string }[];
-    ctaDestaques: string;
-  };
-  diferenciais: {
-    rotulo: string;
-    titulo: string;
-    destaque: string;
-    texto: string;
-    numeros: { valor: string; rotulo: string }[];
-    itens: Item[];
-  };
-  depoimentos?: { titulo: string; itens: { nome: string; cargo: string; empresa: string; texto: string }[] };
-  contato: {
-    titulo: string;
-    texto: string;
-    rotuloBotao: string;
-    whatsapp?: string; // só dígitos, com DDI
-    telefone?: string;
-    email?: string;
-    endereco?: string[];
-    cnpj?: string;
-  };
-  rodape: { descricao: string; links: { nome: string; href: string }[]; newsletter?: boolean };
-};
-
-/** Link de contato: WhatsApp quando há celular, senão ligação. */
-export function linkContato(contato: SiteTransportadora["contato"], mensagem?: string): string | undefined {
-  if (contato.whatsapp) {
-    return `https://wa.me/${contato.whatsapp}${mensagem ? `?text=${encodeURIComponent(mensagem)}` : ""}`;
-  }
-  if (contato.telefone) return `tel:+55${contato.telefone.replace(/\D/g, "")}`;
-  return undefined;
-}
+export { linkContato } from "@/lib/prototipos/conteudo";
+export type { Icone } from "@/lib/prototipos/conteudo";
+export type SiteTransportadora = ConteudoSite;
 
 export const novaVia: SiteTransportadora = {
   inicio: "/transportes",
+  icone: "caminhao",
   marca: { texto: "Nova", destaque: "Via" },
   nomeCompleto: "NovaVia Logística",
   menu: [
@@ -98,6 +27,7 @@ export const novaVia: SiteTransportadora = {
       "Especialistas em transporte rodoviário e logística integrada. Mais de 10 mil entregas realizadas com segurança, tecnologia e rastreamento em tempo real.",
     // Foto de Josiah Farrow, licença gratuita do Unsplash (unsplash.com/photos/ucuOscdCaO4)
     imagem: "https://images.unsplash.com/photo-1592805144716-feeccccef5ac?fm=jpg&q=70&w=1600&fit=crop",
+    imagemAlt: "Frota de caminhões",
     ctaPrincipal: "Solicitar Orçamento",
     ctaSecundario: "Nossas Soluções",
   },

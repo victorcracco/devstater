@@ -1,14 +1,16 @@
-import { Truck, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { ICONES } from "./icones";
 import type { SiteTransportadora } from "../site";
 
 export default function Footer({ site }: { site: SiteTransportadora }) {
   const { contato, rodape } = site;
+  const Logo = ICONES[site.icone];
   return (
     <footer className="bg-slate-950 text-slate-300 py-16 px-6 md:px-12 border-t border-white/10">
       <div className={`max-w-7xl mx-auto grid grid-cols-1 gap-12 ${rodape.newsletter ? "md:grid-cols-4" : "md:grid-cols-3"}`}>
         <div className="space-y-4">
           <div className="flex items-center gap-2 mb-6">
-            <Truck className="w-8 h-8 text-orange-500 shrink-0" />
+            <Logo className="w-8 h-8 text-orange-500 shrink-0" />
             <span className="text-2xl font-bold tracking-tighter text-white">
               {site.marca.texto}<span className="text-orange-500">{site.marca.destaque}</span>
             </span>
@@ -70,6 +72,7 @@ export default function Footer({ site }: { site: SiteTransportadora }) {
       <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/10 text-center text-sm text-slate-500">
         © {new Date().getFullYear()} {site.nomeCompleto}. Todos os direitos reservados.
         {contato.cnpj && <span className="block mt-1">CNPJ {contato.cnpj}</span>}
+        {contato.registro && <span className="block mt-1">{contato.registro}</span>}
       </div>
     </footer>
   );

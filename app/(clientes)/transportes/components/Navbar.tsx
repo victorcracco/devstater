@@ -1,10 +1,12 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Truck, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { ICONES } from "./icones";
 import type { SiteTransportadora } from "../site";
 
 export default function Navbar({ site, comFaixa = false }: { site: SiteTransportadora; comFaixa?: boolean }) {
+  const Logo = ICONES[site.icone];
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -15,10 +17,10 @@ export default function Navbar({ site, comFaixa = false }: { site: SiteTransport
   }, []);
 
   return (
-    <header className={`fixed ${comFaixa ? "top-[72px] sm:top-10" : "top-0"} left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"}`}>
+    <header className={`fixed ${comFaixa ? "top-[112px] md:top-[72px]" : "top-0"} left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"}`}>
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between gap-4">
         <Link href={site.inicio} className="flex items-center gap-2 group min-w-0">
-          <Truck className={`w-8 h-8 shrink-0 ${isScrolled ? "text-blue-900" : "text-white"} transition-colors`} />
+          <Logo className={`w-8 h-8 shrink-0 ${isScrolled ? "text-blue-900" : "text-white"} transition-colors`} />
           <span className={`text-2xl font-bold tracking-tighter truncate ${isScrolled ? "text-slate-900" : "text-white"}`}>
             {site.marca.texto}<span className="text-orange-500">{site.marca.destaque}</span>
           </span>

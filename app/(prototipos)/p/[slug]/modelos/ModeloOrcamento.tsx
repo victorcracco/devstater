@@ -1,22 +1,16 @@
 import { Check, MapPin, Phone } from "lucide-react";
 import { ICONES } from "@/app/(clientes)/transportes/components/icones";
-import { linkContato, type SiteTransportadora } from "@/app/(clientes)/transportes/site";
 import WhatsAppButton from "@/app/(clientes)/transportes/components/WhatsAppButton";
-import type { DadosPrototipo } from "@/lib/prototipos/dados";
-import { linkLigar, linkMapa } from "@/lib/prototipos/transportadora";
+import { linkContato } from "@/lib/prototipos/conteudo";
+import { linkLigar, linkMapa } from "@/lib/prototipos/utilidades";
 import FormularioOrcamento from "./FormularioOrcamento";
+import type { PropsModelo } from "./index";
 
-const PASSOS = [
-  { titulo: "Conte o que precisa", texto: "Informe origem, destino e o que vai ser transportado." },
-  { titulo: "Receba prazo e valor", texto: "Nossa equipe responde com a melhor opção para o seu caso." },
-  { titulo: "Coleta e entrega", texto: "Com tudo combinado, cuidamos do transporte até o destino." },
-];
-
-// Para quem vive de pedido de orçamento: o formulário já aparece no topo da página
-export default function ModeloOrcamento({ site, dados }: { site: SiteTransportadora; dados: DadosPrototipo }) {
-  const { contato, diferenciais, hero, servicos } = site;
+// Para quem vive de pedido de contato: o formulário já aparece no topo da página
+export default function ModeloOrcamento({ site, dados }: PropsModelo) {
+  const { contato, conversao, diferenciais, hero, servicos } = site;
   const ligar = linkLigar(contato.telefone);
-  const principal = linkContato(contato, `Olá, ${dados.nome}! Gostaria de um orçamento.`);
+  const principal = linkContato(contato, conversao.mensagem);
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
@@ -35,7 +29,7 @@ export default function ModeloOrcamento({ site, dados }: { site: SiteTransportad
 
       <main>
         <section className="relative overflow-hidden bg-slate-950 text-white">
-          <img src={hero.imagem} alt="Caminhão na estrada" className="absolute inset-0 h-full w-full object-cover opacity-70" />
+          <img src={hero.imagem} alt={hero.imagemAlt} className="absolute inset-0 h-full w-full object-cover opacity-70" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/75 to-slate-950/20" />
           <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 md:py-20 lg:grid-cols-[3fr_2fr]">
             <div>
@@ -54,11 +48,11 @@ export default function ModeloOrcamento({ site, dados }: { site: SiteTransportad
               </ul>
             </div>
             {contato.whatsapp || contato.email ? (
-              <FormularioOrcamento empresa={dados.nome} whatsapp={contato.whatsapp} email={contato.email} />
+              <FormularioOrcamento conversao={conversao} whatsapp={contato.whatsapp} email={contato.email} />
             ) : (
               principal && (
                 <a href={principal} className="rounded-2xl bg-yellow-400 p-8 text-center text-2xl font-extrabold text-slate-950 hover:bg-yellow-300">
-                  Ligue e peça seu orçamento
+                  {conversao.acao} por telefone
                 </a>
               )
             )}
@@ -67,9 +61,9 @@ export default function ModeloOrcamento({ site, dados }: { site: SiteTransportad
 
         <section className="py-16">
           <div className="mx-auto max-w-6xl px-6">
-            <h2 className="mb-10 text-3xl font-extrabold tracking-tight">Como funciona</h2>
+            <h2 className="mb-10 text-3xl font-extrabold tracking-tight">{conversao.tituloPassos}</h2>
             <ol className="grid gap-6 md:grid-cols-3">
-              {PASSOS.map((passo, i) => (
+              {conversao.passos.map((passo, i) => (
                 <li key={passo.titulo} className="rounded-2xl border border-slate-200 p-6">
                   <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-yellow-400 font-extrabold text-slate-950">{i + 1}</span>
                   <h3 className="mb-2 text-lg font-extrabold">{passo.titulo}</h3>
@@ -128,6 +122,7 @@ export default function ModeloOrcamento({ site, dados }: { site: SiteTransportad
       <footer className="bg-slate-950 px-6 py-6 text-center text-sm text-slate-400">
         © {new Date().getFullYear()} {dados.nome}
         {contato.cnpj ? ` · CNPJ ${contato.cnpj}` : ""}
+        {contato.registro ? ` · ${contato.registro}` : ""}
       </footer>
       <WhatsAppButton site={site} />
     </div>

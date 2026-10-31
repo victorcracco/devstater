@@ -1,7 +1,8 @@
 import {
-  ArrowRightLeft, Award, BadgeCheck, Boxes, Building2, CalendarDays, Clock4, Flame, Headset,
-  MapPin, PackageOpen, Route, ShieldCheck, Snowflake, Sofa, TrendingUp, Truck, Users, Warehouse,
-  Weight, type LucideIcon,
+  Activity, ArrowRightLeft, Award, BadgeCheck, Boxes, Brain, Building2, CalendarCheck, CalendarDays, Car,
+  ClipboardList, Clock4, Cog, Flame, Gauge, HandHeart, Headset, HeartPulse, Hospital, House, KeyRound, Leaf,
+  MapPin, MapPinned, PackageOpen, Paintbrush, Route, Scissors, ShieldCheck, Smile, Snowflake, Sofa, Sparkles,
+  Stethoscope, Syringe, TrendingUp, Truck, Users, Warehouse, Weight, Wrench, type LucideIcon,
 } from "lucide-react";
 import type { Icone } from "../site";
 
@@ -26,4 +27,25 @@ export const ICONES: Record<Icone, LucideIcon> = {
   caixas: Boxes,
   sofa: Sofa,
   selo: BadgeCheck,
+  estetoscopio: Stethoscope,
+  coracao: HeartPulse,
+  cerebro: Brain,
+  ferramenta: Wrench,
+  carro: Car,
+  casa: House,
+  chave: KeyRound,
+  brilho: Sparkles,
+  sorriso: Smile,
+  agenda: CalendarCheck,
+  prancheta: ClipboardList,
+  folha: Leaf,
+  tesoura: Scissors,
+  cuidado: HandHeart,
+  hospital: Hospital,
+  seringa: Syringe,
+  pulso: Activity,
+  velocimetro: Gauge,
+  pintura: Paintbrush,
+  engrenagem: Cog,
+  mapa: MapPinned,
 };

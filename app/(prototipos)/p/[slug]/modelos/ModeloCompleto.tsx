@@ -7,10 +7,10 @@ import Differentials from "@/app/(clientes)/transportes/components/Differentials
 import ContactCTA from "@/app/(clientes)/transportes/components/ContactCTA";
 import Footer from "@/app/(clientes)/transportes/components/Footer";
 import WhatsAppButton from "@/app/(clientes)/transportes/components/WhatsAppButton";
-import type { SiteTransportadora } from "@/app/(clientes)/transportes/site";
+import type { ConteudoSite } from "@/lib/prototipos/conteudo";
 
 // Para empresas maiores: o template completo do demo /transportes, com todas as seções
-export default function ModeloCompleto({ site }: { site: SiteTransportadora }) {
+export default function ModeloCompleto({ site }: { site: ConteudoSite }) {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       <Navbar site={site} comFaixa />

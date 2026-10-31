@@ -10,7 +10,7 @@ export default function Hero({ site }: { site: SiteTransportadora }) {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent z-10" />
         <img
           src={hero.imagem}
-          alt="Frota de caminhões"
+          alt={hero.imagemAlt}
           className="w-full h-full object-cover opacity-60"
         />
       </div>

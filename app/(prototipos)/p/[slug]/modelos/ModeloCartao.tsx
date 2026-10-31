@@ -1,14 +1,14 @@
 import { Mail, MapPin, MessageCircle, Phone, type LucideIcon } from "lucide-react";
 import { ICONES } from "@/app/(clientes)/transportes/components/icones";
-import { linkContato, type SiteTransportadora } from "@/app/(clientes)/transportes/site";
-import type { DadosPrototipo } from "@/lib/prototipos/dados";
-import { iniciais, linkLigar, linkMapa } from "@/lib/prototipos/transportadora";
+import { linkContato } from "@/lib/prototipos/conteudo";
+import { iniciais, linkLigar, linkMapa } from "@/lib/prototipos/utilidades";
+import type { PropsModelo } from "./index";
 
 type Acao = { icone: LucideIcon; rotulo: string; detalhe?: string; href: string };
 
 // Para a empresa pequena: uma tela só, feita para o celular, como um cartão de visita
-export default function ModeloCartao({ site, dados }: { site: SiteTransportadora; dados: DadosPrototipo }) {
-  const { contato, hero, servicos } = site;
+export default function ModeloCartao({ site, dados }: PropsModelo) {
+  const { contato, conversao, hero, servicos } = site;
   const secundarias: Acao[] = [
     ...(contato.whatsapp && contato.telefone
       ? [{ icone: Phone, rotulo: "Ligar", detalhe: contato.telefone, href: linkLigar(contato.telefone)! }]
@@ -16,13 +16,13 @@ export default function ModeloCartao({ site, dados }: { site: SiteTransportadora
     ...(contato.email ? [{ icone: Mail, rotulo: "E-mail", detalhe: contato.email, href: `mailto:${contato.email}` }] : []),
     { icone: MapPin, rotulo: "Como chegar", detalhe: `${dados.cidade}/${dados.uf}`, href: linkMapa(dados) },
   ];
-  const principal = linkContato(contato, `Olá, ${dados.nome}! Gostaria de um orçamento.`);
+  const principal = linkContato(contato, conversao.mensagem);
 
   return (
     <main className="min-h-screen bg-slate-200 px-4 py-6 sm:py-12">
       <article className="mx-auto w-full max-w-md overflow-hidden rounded-3xl bg-white shadow-xl">
         <div className="relative h-40">
-          <img src={hero.imagem} alt="Caminhão na estrada" className="h-full w-full object-cover" />
+          <img src={hero.imagem} alt={hero.imagemAlt} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-slate-950/10" />
         </div>
 
@@ -43,7 +43,7 @@ export default function ModeloCartao({ site, dados }: { site: SiteTransportadora
                 className="flex items-center justify-center gap-2 rounded-xl bg-emerald-700 px-5 py-4 font-bold text-white transition-colors hover:bg-emerald-800"
               >
                 {contato.whatsapp ? <MessageCircle className="h-5 w-5" /> : <Phone className="h-5 w-5" />}
-                {contato.whatsapp ? "Pedir orçamento no WhatsApp" : "Ligar e pedir orçamento"}
+                {contato.whatsapp ? `${conversao.acao} no WhatsApp` : `Ligar e ${conversao.acao.toLowerCase()}`}
               </a>
             )}
             {secundarias.map(({ icone: Icone, rotulo, detalhe, href }) => (
@@ -91,6 +91,7 @@ export default function ModeloCartao({ site, dados }: { site: SiteTransportadora
       <p className="mt-6 text-center text-xs text-slate-500">
         © {new Date().getFullYear()} {dados.nome}
         {contato.cnpj ? ` · CNPJ ${contato.cnpj}` : ""}
+        {contato.registro ? ` · ${contato.registro}` : ""}
       </p>
     </main>
   );

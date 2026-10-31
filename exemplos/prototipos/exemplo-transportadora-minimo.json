@@ -1,0 +1,11 @@
+{
+  "slug": "exemplo-transportadora-minimo",
+  "nicho": "transportadoras",
+  "nome": "Transportadora de Nome Bastante Comprido e Serviços Gerais de Exemplo",
+  "cidade": "Santa Cruz do Rio Pardo",
+  "uf": "SP",
+  "email": "um.endereco.de.email.bem.comprido@exemplo.com.br",
+  "cnae": "4930201",
+  "modelo": "cartao",
+  "expiraEm": "2099-12-31"
+}
