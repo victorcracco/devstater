@@ -31,8 +31,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
-      <body className={`${fraunces.variable} ${manrope.variable} soft-text bg-paper text-ink antialiased flex flex-col min-h-screen`}>
+    // As variáveis das fontes ficam no <html> porque o tema do Tailwind as lê na raiz da página
+    <html lang="pt-BR" className={`scroll-smooth ${fraunces.variable} ${manrope.variable}`}>
+      <body className="soft-text bg-paper text-ink antialiased flex flex-col min-h-screen">
 
         {/* Header Fixo */}
         <header className="w-full fixed top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-line">
@@ -45,7 +46,7 @@ export default function RootLayout({
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-ink/70">
               <Link href="/#servicos" className="hover:text-brand transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand rounded">Serviços</Link>
               <Link href="/#portfolio" className="hover:text-brand transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand rounded">Portfólio</Link>
-              <Link href="/#precos" className="hover:text-brand transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand rounded">Preços</Link>
+              <Link href="/#planos" className="hover:text-brand transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand rounded">Planos</Link>
               <Link href="/contato" className="px-4 py-2 bg-brand text-paper rounded-lg hover:bg-brand-dark transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark">Orçamento Grátis</Link>
             </nav>
           </div>

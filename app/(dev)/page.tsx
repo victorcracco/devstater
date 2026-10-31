@@ -32,10 +32,10 @@ export default function Home() {
                   Receber prévia grátis no WhatsApp
                 </a>
                 <Link
-                  href="#precos"
+                  href="#planos"
                   className="px-4 py-2 text-ink font-semibold underline underline-offset-4 decoration-line hover:text-brand hover:decoration-brand transition-colors text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand rounded"
                 >
-                  Ver planos e preços
+                  Ver planos
                 </Link>
               </div>
             </div>
@@ -347,16 +347,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. PREÇOS */}
-      <section id="precos" className="py-24 bg-paper">
+      {/* 6. PLANOS */}
+      <section id="planos" className="py-24 bg-paper">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block mb-3 text-sm font-semibold py-1 px-3 rounded-full bg-brand/10 text-brand border border-brand/20">
-              Planos e Preços
+              Planos
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-ink mb-4 tracking-tight">Investimento transparente</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-ink mb-4 tracking-tight">Três formas de começar</h2>
             <p className="text-lg text-ink/70 max-w-2xl mx-auto">
-              Sem surpresas. Escolha o plano ideal para o momento do seu negócio.
+              Conte o momento do seu negócio e a gente indica o melhor caminho, com orçamento sem compromisso.
             </p>
           </div>
 
@@ -369,10 +369,6 @@ export default function Home() {
                 <h3 className="text-base font-bold text-ink mb-1">Landing de Conversão</h3>
                 <p className="text-xs text-ink/60">Uma página direta, focada em levar o visitante ao WhatsApp</p>
               </div>
-              <div className="mb-1">
-                <span className="font-display text-3xl font-bold text-ink">R$ 797</span>
-              </div>
-              <p className="text-xs text-ink/60 mb-6">Implementação única + mensalidade</p>
               <ul className="space-y-2.5 mb-6 flex-grow">
                 {[
                   "1 página completa e responsiva",
@@ -408,10 +404,6 @@ export default function Home() {
                 <h3 className="text-base font-bold text-paper mb-1">Site Profissional + Google Business</h3>
                 <p className="text-xs text-paper/70">Site completo (4 a 6 páginas) com seu Google Business otimizado</p>
               </div>
-              <div className="mb-1">
-                <span className="font-display text-3xl font-bold text-paper">R$ 1.497</span>
-              </div>
-              <p className="text-xs text-paper/70 mb-6">Implementação única + mensalidade</p>
               <ul className="space-y-2.5 mb-6 flex-grow">
                 {[
                   "De 4 a 6 páginas completas",
@@ -445,10 +437,6 @@ export default function Home() {
                 <h3 className="text-base font-bold text-ink mb-1">Premium + Agente de IA</h3>
                 <p className="text-xs text-ink/60">Site completo + agente de IA no seu WhatsApp</p>
               </div>
-              <div className="mb-1">
-                <span className="font-display text-3xl font-bold text-ink">R$ 2.497</span>
-              </div>
-              <p className="text-xs text-ink/60 mb-6">Implementação única + mensalidade</p>
               <ul className="space-y-2.5 mb-6 flex-grow">
                 {[
                   "Tudo do Site Profissional",
@@ -477,16 +465,16 @@ export default function Home() {
 
           {/* Mensalidade */}
           <div className="bg-white border border-line rounded-xl p-8 mb-6">
-            <h3 className="text-lg font-bold text-ink mb-2">Mensalidade incluída em todos os planos</h3>
-            <p className="text-sm text-ink/60 mb-6">Escolha o nível de acompanhamento que faz sentido para o seu negócio.</p>
+            <h3 className="text-lg font-bold text-ink mb-2">Acompanhamento mensal em todos os planos</h3>
+            <p className="text-sm text-ink/60 mb-6">Além da implementação, escolha o nível de acompanhamento que faz sentido para o seu negócio.</p>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="border border-line rounded-lg p-5">
-                <span className="font-display text-2xl font-bold text-ink">R$ 97<span className="font-sans text-sm font-medium text-ink/60">/mês</span></span>
+                <span className="font-display text-2xl font-bold text-ink">Essencial</span>
                 <p className="text-sm text-ink/70 mt-2">Hospedagem, suporte e pequenas alterações no site.</p>
               </div>
               <div className="border border-line rounded-lg p-5">
-                <span className="font-display text-2xl font-bold text-ink">R$ 197<span className="font-sans text-sm font-medium text-ink/60">/mês</span></span>
-                <p className="text-sm text-ink/70 mt-2">Tudo do plano anterior, com ajustes mensais e relatório simples de desempenho.</p>
+                <span className="font-display text-2xl font-bold text-ink">Completo</span>
+                <p className="text-sm text-ink/70 mt-2">Tudo do Essencial, com ajustes mensais e relatório simples de desempenho.</p>
               </div>
             </div>
           </div>
@@ -529,6 +517,10 @@ export default function Home() {
           <div className="divide-y divide-line border-t border-b border-line">
             {[
               {
+                q: "Quanto custa?",
+                a: "Depende do que o seu negócio precisa. Conte um pouco sobre ele no WhatsApp e enviamos um orçamento sem compromisso.",
+              },
+              {
                 q: "Preciso ter domínio e hospedagem?",
                 a: "Não. Ajudamos a configurar tudo, ou você já pode usar os seus se preferir.",
               },
@@ -538,7 +530,7 @@ export default function Home() {
               },
               {
                 q: "O que está incluso na mensalidade?",
-                a: "No plano de R$ 97/mês: hospedagem, suporte e pequenas alterações. No plano de R$ 197/mês: tudo isso, mais ajustes mensais e relatório simples de desempenho.",
+                a: "No Essencial: hospedagem, suporte e pequenas alterações. No Completo: tudo isso, mais ajustes mensais e relatório simples de desempenho.",
               },
               {
                 q: "Posso pedir alterações depois da entrega?",
