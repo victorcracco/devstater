@@ -1,0 +1,21 @@
+<!doctype html>
+<!-- Foto de perfil do WhatsApp (1024x1024). Gere o PNG com:
+     chrome --headless=new --hide-scrollbars --window-size=1024,1024 --virtual-time-budget=8000 --screenshot=perfil-whatsapp.png perfil-whatsapp.html -->
+<html lang="pt-BR"><head><meta charset="utf-8"><title>DevStarter - perfil do WhatsApp</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@800&family=JetBrains+Mono:wght@700&display=block" rel="stylesheet">
+<style>
+* { margin: 0; box-sizing: border-box; }
+html, body { width: 1024px; height: 1024px; overflow: hidden; }
+body {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(150deg, #2563EB 0%, #1746C7 48%, #0B2A7A 100%);
+  font-family: "Manrope", sans-serif; font-weight: 800; color: #FFFFFF;
+}
+.marca { display: flex; flex-direction: column; align-items: center; }
+.janela { width: 500px; height: 370px; border-radius: 40px; background: #FFFFFF; display: flex; flex-direction: column; box-shadow: 0 30px 70px rgba(6, 24, 84, 0.45); overflow: hidden; }
+.barra { height: 74px; background: #DCE8FF; display: flex; align-items: center; gap: 16px; padding: 0 32px; }
+.barra i { width: 22px; height: 22px; border-radius: 50%; background: #1746C7; display: block; }
+.codigo { flex: 1; display: flex; align-items: center; justify-content: center; color: #1746C7; font-family: "JetBrains Mono", monospace; font-weight: 700; font-size: 170px; letter-spacing: -0.09em; margin-left: -0.09em; }
+.nome { margin-top: 44px; font-size: 96px; line-height: 1; letter-spacing: -0.04em; }
+.claro { color: #A9CBFF; }
+</style></head><body><div class="marca"><div class="janela"><div class="barra"><i></i><i></i><i></i></div><div class="codigo">&lt;/&gt;</div></div><div class="nome">Dev<span class="claro">Starter</span></div></div></body></html>
