@@ -46,7 +46,6 @@ export default function RootLayout({
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-ink/70">
               <Link href="/#servicos" className="hover:text-brand transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand rounded">Serviços</Link>
               <Link href="/#portfolio" className="hover:text-brand transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand rounded">Portfólio</Link>
-              <Link href="/#planos" className="hover:text-brand transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand rounded">Planos</Link>
               <Link href="/contato" className="px-4 py-2 bg-brand text-paper rounded-lg hover:bg-brand-dark transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark">Orçamento Grátis</Link>
             </nav>
           </div>

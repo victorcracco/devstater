@@ -60,10 +60,10 @@ export default function Home() {
                   Receber prévia grátis no WhatsApp
                 </a>
                 <Link
-                  href="#planos"
+                  href="#portfolio"
                   className="px-4 py-2 text-ink font-semibold underline underline-offset-4 decoration-line hover:text-brand hover:decoration-brand transition-colors text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand rounded"
                 >
-                  Ver planos
+                  Ver projetos
                 </Link>
               </div>
             </div>
@@ -128,7 +128,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-ink mb-4 tracking-tight">Soluções sob medida</h2>
             <p className="text-lg text-ink/70 max-w-2xl mx-auto">
-              Do primeiro contato até o agendamento, cada plano resolve uma etapa do caminho até o seu cliente.
+              Do primeiro contato até o agendamento, cada serviço resolve uma etapa do caminho até o seu cliente.
             </p>
           </div>
 
@@ -410,168 +410,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. PLANOS */}
-      <section id="planos" className="py-24 bg-paper">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <span className="inline-block mb-3 text-sm font-semibold py-1 px-3 rounded-full bg-brand/10 text-brand border border-brand/20">
-              Planos
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-ink mb-4 tracking-tight">Três formas de começar</h2>
-            <p className="text-lg text-ink/70 max-w-2xl mx-auto">
-              Conte o momento do seu negócio e a gente indica o melhor caminho, com orçamento sem compromisso.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 items-stretch mb-10">
-
-            {/* Landing de Conversão */}
-            <div className="bg-white rounded-xl border border-line p-7 flex flex-col hover:shadow-lg transition-shadow">
-              <div className="mb-5">
-                <span className="inline-block text-xs font-bold px-2 py-1 bg-brand/10 text-brand rounded-full mb-3">Landing de Conversão</span>
-                <h3 className="text-base font-bold text-ink mb-1">Landing de Conversão</h3>
-                <p className="text-xs text-ink/60">Uma página direta, focada em levar o visitante ao WhatsApp</p>
-              </div>
-              <ul className="space-y-2.5 mb-6 flex-grow">
-                {[
-                  "1 página completa e responsiva",
-                  "Botão de WhatsApp em destaque",
-                  "Serviços, preços e diferenciais",
-                  "Endereço e horários de atendimento",
-                  "SEO básico",
-                  "Entrega em até 7 dias",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-ink/70">
-                    <span className="w-4 h-4 rounded-full bg-brand/10 text-brand flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={whatsappLink("Olá! Quero saber mais sobre a Landing de Conversão.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center py-3 border-2 border-ink text-ink font-bold rounded-lg hover:bg-ink hover:text-paper transition-colors text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-              >
-                Quero essa landing
-              </a>
-            </div>
-
-            {/* Site Profissional + GBP — Destaque */}
-            <div className="bg-brand text-paper rounded-xl p-7 flex flex-col shadow-xl relative">
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-brand-dark text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap">
-                MAIS ESCOLHIDO
-              </div>
-              <div className="mb-5">
-                <span className="inline-block text-xs font-bold px-2 py-1 bg-paper/15 text-paper rounded-full mb-3">Site Profissional</span>
-                <h3 className="text-base font-bold text-paper mb-1">Site Profissional + Google Business</h3>
-                <p className="text-xs text-paper/70">Site completo (4 a 6 páginas) com seu Google Business otimizado</p>
-              </div>
-              <ul className="space-y-2.5 mb-6 flex-grow">
-                {[
-                  "De 4 a 6 páginas completas",
-                  "Google Business Profile otimizado",
-                  "Design premium responsivo",
-                  "WhatsApp + formulário de contato",
-                  "SEO on-page completo",
-                  "Google Analytics",
-                  "Entrega em até 7 dias",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-paper">
-                    <span className="w-4 h-4 rounded-full bg-paper/15 text-paper flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={whatsappLink("Olá! Quero saber mais sobre o Site Profissional + Google Business.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center py-3 bg-accent text-brand-dark font-bold rounded-lg hover:opacity-90 transition-opacity text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
-              >
-                Quero esse plano
-              </a>
-            </div>
-
-            {/* Premium com Agente de IA */}
-            <div className="bg-white rounded-xl border border-line p-7 flex flex-col hover:shadow-lg transition-shadow">
-              <div className="mb-5">
-                <span className="inline-block text-xs font-bold px-2 py-1 bg-brand/10 text-brand rounded-full mb-3">Premium</span>
-                <h3 className="text-base font-bold text-ink mb-1">Premium + Agente de IA</h3>
-                <p className="text-xs text-ink/60">Site completo + agente de IA no seu WhatsApp</p>
-              </div>
-              <ul className="space-y-2.5 mb-6 flex-grow">
-                {[
-                  "Tudo do Site Profissional",
-                  "Agente de IA no WhatsApp do cliente",
-                  "Responde dúvidas automaticamente",
-                  "Qualifica e agenda atendimentos",
-                  "Google Business Profile otimizado",
-                  "Entrega em até 7 dias",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-2.5 text-sm text-ink/70">
-                    <span className="w-4 h-4 rounded-full bg-brand/10 text-brand flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <a
-                href={whatsappLink("Olá! Quero saber mais sobre o plano Premium com Agente de IA.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full text-center py-3 border-2 border-ink text-ink font-bold rounded-lg hover:bg-ink hover:text-paper transition-colors text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-              >
-                Quero o Premium
-              </a>
-            </div>
-          </div>
-
-          {/* Mensalidade */}
-          <div className="bg-white border border-line rounded-xl p-8 mb-6">
-            <h3 className="text-lg font-bold text-ink mb-2">Acompanhamento mensal em todos os planos</h3>
-            <p className="text-sm text-ink/60 mb-6">Além da implementação, escolha o nível de acompanhamento que faz sentido para o seu negócio.</p>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="border border-line rounded-lg p-5">
-                <span className="font-display text-2xl font-bold text-ink">Essencial</span>
-                <p className="text-sm text-ink/70 mt-2">Hospedagem, suporte e pequenas alterações no site.</p>
-              </div>
-              <div className="border border-line rounded-lg p-5">
-                <span className="font-display text-2xl font-bold text-ink">Completo</span>
-                <p className="text-sm text-ink/70 mt-2">Tudo do Essencial, com ajustes mensais e relatório simples de desempenho.</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Pagamento e Garantia */}
-          <div className="bg-brand-dark text-paper rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-4">
-              <span className="text-4xl">🛡️</span>
-              <div>
-                <h4 className="text-lg font-bold mb-1">Garantia de satisfação</h4>
-                <p className="text-paper/60 text-sm">Não gostou da prévia final? Você não paga a segunda parcela.</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-4xl">💳</span>
-              <div>
-                <h4 className="text-lg font-bold mb-1">Formas de pagamento</h4>
-                <p className="text-paper/60 text-sm">Pix (50% para iniciar e 50% na entrega) ou cartão parcelado.</p>
-              </div>
-            </div>
-            <a
-              href={whatsappLink("Olá! Quero falar com a DevStarter sobre os planos.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-accent text-brand-dark font-bold rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap flex-shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
-            >
-              Falar com especialista
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* 7. FAQ */}
-      <section id="faq" className="py-24 bg-white">
+      {/* 6. FAQ */}
+      <section id="faq" className="py-24 bg-paper">
         <div className="max-w-3xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-ink mb-4 tracking-tight">Perguntas frequentes</h2>
@@ -592,16 +432,16 @@ export default function Home() {
                 a: "Pix com 50% para iniciar e 50% na entrega, ou cartão parcelado.",
               },
               {
-                q: "O que está incluso na mensalidade?",
-                a: "No Essencial: hospedagem, suporte e pequenas alterações. No Completo: tudo isso, mais ajustes mensais e relatório simples de desempenho.",
+                q: "Tem mensalidade?",
+                a: "Depende do que for combinado. Hospedagem, suporte e ajustes no site entram na conversa pelo WhatsApp, de acordo com o que o seu negócio precisa.",
               },
               {
                 q: "Posso pedir alterações depois da entrega?",
-                a: "Sim, dentro do que está incluso na mensalidade escolhida.",
+                a: "Sim. Combinamos como isso vai funcionar quando fechamos o projeto.",
               },
               {
                 q: "O agente de IA funciona em qualquer WhatsApp?",
-                a: "Sim, ele é configurado no número de WhatsApp do seu negócio (disponível no plano Premium).",
+                a: "Sim, ele é configurado no número de WhatsApp do seu negócio.",
               },
               {
                 q: "Quanto tempo leva para o site ficar pronto?",
@@ -620,7 +460,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. CTA FINAL: Chamada para ação */}
+      {/* 7. CTA FINAL: Chamada para ação */}
       <section className="py-20 bg-brand-dark text-paper">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="font-display text-3xl md:text-4xl font-bold mb-6">Pronto para começar?</h2>
