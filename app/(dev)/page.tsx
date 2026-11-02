@@ -1,6 +1,34 @@
+import Image from "next/image";
 import Link from "next/link";
 import { whatsappLink } from "@/lib/whatsapp";
 import SignatureElement from "./components/SignatureElement";
+
+const PROJETOS_NO_AR = [
+  {
+    nome: "Mecânica Lins",
+    area: "Indústria",
+    tipo: "Site Profissional",
+    imagem: "/portfolio/mecanica-lins.webp",
+    link: "https://www.mecanicalins.com.br/",
+    descricao: "Site de uma empresa de torno, solda e manutenção em Lins/SP, com uma página para cada serviço, pensado para as buscas da região e para pedidos de orçamento no WhatsApp.",
+  },
+  {
+    nome: "UltraOrça",
+    area: "Sistema",
+    tipo: "Produto próprio",
+    imagem: "/portfolio/ultraorca.webp",
+    link: "https://www.ultraorca.com.br/",
+    descricao: "Sistema online para criar orçamentos em PDF com a marca da empresa e enviar ao cliente pelo WhatsApp.",
+  },
+  {
+    nome: "Subathon",
+    area: "Streaming",
+    tipo: "Produto próprio",
+    imagem: "/portfolio/subathon.webp",
+    link: "https://subathon.com.br/",
+    descricao: "Portal para assistir lives da Twitch, Kick e YouTube na mesma tela, sem cadastro e sem instalar nada, com guias de setup para streamers.",
+  },
+];
 
 export default function Home() {
   return (
@@ -182,24 +210,59 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. PORTFÓLIO: Nichos atendidos */}
+      {/* 5. PORTFÓLIO: projetos reais e demonstrações por nicho */}
       <section id="portfolio" className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block mb-3 text-sm font-semibold py-1 px-3 rounded-full bg-brand/10 text-brand border border-brand/20">
               Nossos Projetos
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-ink mb-4 tracking-tight">Sites que já entregamos</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-ink mb-4 tracking-tight">Projetos reais, no ar</h2>
             <p className="text-lg text-ink/70 max-w-2xl mx-auto">
-              Desenvolvemos soluções sob medida para cada segmento. Veja alguns exemplos do que podemos fazer pelo seu negócio.
+              Abra e veja funcionando. Mais abaixo, demonstrações do que podemos montar para cada tipo de negócio.
             </p>
           </div>
 
-          {/* Sites Institucionais */}
+          {/* Projetos no ar */}
           <div className="mb-4">
             <span className="inline-flex items-center gap-2 text-sm font-bold text-brand mb-6">
               <span className="w-2 h-2 rounded-full bg-brand inline-block"></span>
-              Sites Profissionais
+              Projetos no ar
+            </span>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {PROJETOS_NO_AR.map((projeto) => (
+              <div key={projeto.nome} className="group rounded-xl overflow-hidden border border-line hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white">
+                <div className="h-48 bg-brand-dark relative overflow-hidden">
+                  <Image
+                    src={projeto.imagem}
+                    alt={`Página inicial do site ${projeto.nome}`}
+                    fill
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xs font-bold px-2 py-1 bg-line/40 text-ink/70 rounded-md">{projeto.area}</span>
+                    <span className="text-xs text-ink/60">{projeto.tipo}</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-ink mb-2">{projeto.nome}</h3>
+                  <p className="text-sm text-ink/70 leading-relaxed mb-4">{projeto.descricao}</p>
+                  <a href={projeto.link} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-brand hover:text-brand-dark flex items-center gap-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand rounded">
+                    Ver site no ar
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Demonstrações de sites */}
+          <div className="mb-4">
+            <span className="inline-flex items-center gap-2 text-sm font-bold text-brand mb-6">
+              <span className="w-2 h-2 rounded-full bg-brand inline-block"></span>
+              Demonstrações de sites profissionais
             </span>
           </div>
           <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -270,11 +333,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Landing de Conversão */}
+          {/* Demonstrações de landing */}
           <div className="mb-4">
             <span className="inline-flex items-center gap-2 text-sm font-bold text-brand mb-6">
               <span className="w-2 h-2 rounded-full bg-brand inline-block"></span>
-              Landing de Conversão
+              Demonstrações de landing de conversão
             </span>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
