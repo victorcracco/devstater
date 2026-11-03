@@ -14,6 +14,8 @@ RE_DEVOLUCAO = re.compile(
     r"|returned mail|n[aã]o foi poss[ií]vel entregar|falha na entrega",
     re.I,
 )
+# Aviso de atraso: o servidor de destino ainda está tentando entregar. Se desistir, chega outro aviso
+RE_ATRASO = re.compile(r"\(delay\)|delayed|still being retried|delivery delay|\(atraso\)|entrega atrasada", re.I)
 RE_AUSENTE = re.compile(r"resposta autom[aá]tica|automatic reply|auto.?reply|out of (the )?office|ausente|f[eé]rias", re.I)
 # Pedidos de saída: frases inequívocas valem em qualquer ponto do início da resposta; a palavra
 # solta ("sair") só vale se for a resposta inteira, para não pegar "vou sair de férias"
@@ -75,7 +77,7 @@ def _lead(conn, msg, remetente: str) -> str | None:
 
 def classificar(msg, remetente: str, assunto: str, texto: str) -> str:
     if remetente.startswith(("mailer-daemon", "postmaster")) or RE_DEVOLUCAO.search(assunto):
-        return "devolvido"
+        return "atraso" if RE_ATRASO.search(assunto) else "devolvido"
     automatica = msg.get("Auto-Submitted", "no").lower() != "no" or msg.get("X-Autoreply") or msg.get("X-Autorespond")
     if automatica or RE_AUSENTE.search(assunto):
         return "ausente"
@@ -105,6 +107,8 @@ def _processar_mensagem(conn, msg) -> str:
     assunto = str(msg.get("Subject", ""))
     texto = _sem_citacao(_texto(msg))
     classificacao = classificar(msg, remetente, assunto, texto)
+    if classificacao == "atraso":
+        return classificacao  # não bloqueia nem conta na trava; só aparece na contagem do ciclo
 
     with conn:
         if classificacao == "devolvido":
